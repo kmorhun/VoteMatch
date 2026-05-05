@@ -1,36 +1,214 @@
 {
   "SPEAKER_00": {
-    "name": "Chris Montero",
+    "name": "Caitlin Duby",
     "role": "candidate",
     "name_votes": {
-      "Chris Montero": 4,
-      "Again": 1
+      "Caitlin Duby": 4,
+      "Caitlin": 1
     },
-    "word_count": 433,
-    "segment_count": 33,
+    "word_count": 1249,
+    "segment_count": 63,
     "include_in_quiz": true
   },
   "SPEAKER_01": {
-    "name": "Elizabeth Hudson",
+    "name": "Richard Harding",
     "role": "candidate",
     "name_votes": {
-      "Elizabeth Hudson": 8,
-      "Sorry": 1,
-      "Yeah": 1
+      "Richard Harding": 4,
+      "Paris": 1
     },
-    "word_count": 169,
-    "segment_count": 15,
+    "word_count": 1311,
+    "segment_count": 82,
     "include_in_quiz": true
   },
   "SPEAKER_02": {
+    "name": "Chris Montero",
+    "role": "moderator",
+    "name_votes": {
+      "Chris Montero": 4,
+      "Again": 2,
+      "Otherwise": 1,
+      "Louisa": 1
+    },
+    "word_count": 1563,
+    "segment_count": 164,
+    "include_in_quiz": false
+  },
+  "SPEAKER_03": {
+    "name": "Again",
+    "role": "candidate",
+    "name_votes": {
+      "Again": 1,
+      "Second": 1
+    },
+    "word_count": 1227,
+    "segment_count": 81,
+    "include_in_quiz": true
+  },
+  "SPEAKER_04": {
+    "name": "Joel Patterson",
+    "role": "candidate",
+    "name_votes": {
+      "Joel Patterson": 4
+    },
+    "word_count": 216,
+    "segment_count": 26,
+    "include_in_quiz": true
+  },
+  "SPEAKER_05": {
+    "name": "Laqueen Battle",
+    "role": "candidate",
+    "name_votes": {
+      "Laqueen Arlene Battle": 4,
+      "Again": 4,
+      "Laqueen Battle": 12,
+      "Lately": 1,
+      "Okay": 1,
+      "Unfortunately": 1
+    },
+    "word_count": 1319,
+    "segment_count": 115,
+    "include_in_quiz": true
+  },
+  "SPEAKER_06": {
+    "name": "Eugenia Shraha",
+    "role": "candidate",
+    "name_votes": {
+      "Sorry": 1,
+      "Eugenia Shraha": 8,
+      "Yeah": 2,
+      "Anyway": 1,
+      "Finally": 1,
+      "Eugenia Schraha": 4
+    },
+    "word_count": 1573,
+    "segment_count": 102,
+    "include_in_quiz": true
+  },
+  "SPEAKER_07": {
+    "name": "Lily Havstad",
+    "role": "candidate",
+    "name_votes": {
+      "Lily Havstad": 4,
+      "Previously": 1,
+      "Yeah": 2,
+      "Secondly": 1,
+      "Furthermore": 1,
+      "Lilly Habstead": 4
+    },
+    "word_count": 1111,
+    "segment_count": 64,
+    "include_in_quiz": true
+  },
+  "SPEAKER_08": {
+    "name": "Yeah",
+    "role": "candidate",
+    "name_votes": {
+      "Yeah": 1,
+      "Look": 1
+    },
+    "word_count": 1286,
+    "segment_count": 93,
+    "include_in_quiz": true
+  },
+  "SPEAKER_09": {
+    "name": "Judgingly",
+    "role": "candidate",
+    "name_votes": {
+      "Secondly": 1,
+      "One": 1,
+      "Second": 1,
+      "Currently": 1,
+      "Actually": 1,
+      "Judgingly": 2
+    },
+    "word_count": 1200,
+    "segment_count": 89,
+    "include_in_quiz": true
+  },
+  "SPEAKER_10": {
+    "name": "Yeah",
+    "role": "candidate",
+    "name_votes": {
+      "Yeah": 1
+    },
+    "word_count": 925,
+    "segment_count": 68,
+    "include_in_quiz": true
+  },
+  "SPEAKER_11": {
     "name": "David Weinstein",
     "role": "candidate",
     "name_votes": {
       "Great": 1,
-      "David Weinstein": 4
+      "David Weinstein": 8,
+      "Personally": 1
     },
-    "word_count": 233,
-    "segment_count": 19,
+    "word_count": 1682,
+    "segment_count": 87,
+    "include_in_quiz": true
+  },
+  "SPEAKER_12": {
+    "name": "Jane Hershey",
+    "role": "candidate",
+    "name_votes": {
+      "Jane Hershey": 12,
+      "Informally": 1
+    },
+    "word_count": 883,
+    "segment_count": 63,
+    "include_in_quiz": true
+  },
+  "SPEAKER_13": {
+    "name": "Alex Bowers",
+    "role": "candidate",
+    "name_votes": {
+      "Alex Bowers": 8
+    },
+    "word_count": 756,
+    "segment_count": 47,
+    "include_in_quiz": true
+  },
+  "SPEAKER_14": {
+    "name": "Elizabeth Hudson",
+    "role": "candidate",
+    "name_votes": {
+      "Elizabeth Hudson": 16,
+      "Yeah": 1,
+      "Again": 1,
+      "Practically": 1,
+      "Also": 2
+    },
+    "word_count": 2356,
+    "segment_count": 190,
+    "include_in_quiz": true
+  },
+  "SPEAKER_15": {
+    "name": null,
+    "role": "candidate",
+    "name_votes": {},
+    "word_count": 251,
+    "segment_count": 41,
+    "include_in_quiz": true
+  },
+  "SPEAKER_16": {
+    "name": "Jess Goetz",
+    "role": "candidate",
+    "name_votes": {
+      "Jess Goetz": 4,
+      "Honestly": 1,
+      "Jess Getz": 4
+    },
+    "word_count": 1227,
+    "segment_count": 70,
+    "include_in_quiz": true
+  },
+  "UNKNOWN": {
+    "name": null,
+    "role": "candidate",
+    "name_votes": {},
+    "word_count": 15,
+    "segment_count": 4,
     "include_in_quiz": true
   }
 }

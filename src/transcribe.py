@@ -11,7 +11,7 @@ Requirements:
     pip install whisperx pyannote.audio torch
 
 You'll need a HuggingFace token with access to:
-    - pyannote/speaker-diarization-3.1
+    - pyannote/speaker-diarization-community-1
     - pyannote/segmentation-3.0
 Set it in .env as HF_TOKEN=hf_...
 """
