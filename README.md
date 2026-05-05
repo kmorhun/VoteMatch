@@ -1,97 +1,214 @@
----
-title: 6.C395 VoteMatch
-emoji: ✅ 
-colorFrom: blue
-colorTo: red
-sdk: gradio
-sdk_version: 5.23.3
-python_version: "3.10"
-# app_file: app.py
-pinned: false
-secrets:
-  - HF_TOKEN
+# VoteMatch
+
+A voter-matching quiz for the Cambridge School Committee 2025 election.
+Voters answer ~10 Likert-scale questions about local education policy
+and get matched to the candidates whose stated positions are closest to theirs.
+
+**Key design principle:** Every inferred candidate position is grounded in a
+verbatim quote from a public CCTV forum transcript. No position is published
+without a supporting quote.
+
 ---
 
-# 6.C395 VoteMatch
+## Architecture
+
+```
+VoteMatch/
+├── data/
+│   ├── 2025-09-10-CCTV.mp3        ← raw audio (not committed to git)
+│   ├── transcripts/
+│   │   └── 2025-09-10_diarized.json   ← output of Step 1
+│   ├── speaker_map.json               ← output of Step 2 (edit this!)
+│   └── quiz_data.json                 ← output of Step 3
+│
+├── src/
+│   ├── transcribe.py          ← Step 1: WhisperX + pyannote diarization
+│   ├── identify_speakers.py   ← Step 2: heuristic speaker → name mapping
+│   └── generate_quiz.py       ← Step 3: Claude API → grounded quiz questions
+│
+├── docs/                      ← GitHub Pages site (static, no server needed)
+│   ├── index.html             ← the quiz UI
+│   └── quiz_data.json         ← copy of data/quiz_data.json
+│
+├── models/                    ← Whisper model weights (auto-downloaded, not committed)
+├── requirements.txt
+└── .env                       ← HF_TOKEN and ANTHROPIC_API_KEY (never commit this!)
+```
+
+---
 
 ## Setup
 
-1. Make a virtual environment and install the required dependencies:
+### 1. Install dependencies
+
 ```bash
 python -m venv venv
-source venv/bin/activate
+source venv/bin/activate   # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-2. Make a HuggingFace account and make an access token:
-   - Visit [Hugging Face](https://huggingface.co)
-   - Make an account if you don't already have one
-   - Click on your profile, then "Access Tokens" and make a new token
-   - Make a .env file with `HF_TOKEN=<insert your token here>`
-   - Now, log in to Hugging Face in the terminal as well:
-   ```bash
-   huggingface-cli login
-   ```
+Install `ffmpeg` as described on https://github.com/openai/whisper#setup
 
-3. Choose a base model:
-   - In config.py, set the BASE_MODEL variable to your base model of choice from HuggingFace.
-   - Keep in mind it's better to have a small, lightweight model if you plan on finetuning.
+```bash
+# on MacOS using Homebrew (https://brew.sh/)
+brew install ffmpeg
 
+# on Windows using Chocolatey (https://chocolatey.org/)
+choco install ffmpeg
 
-## Deploying to Hugging Face
+# on Windows using Scoop (https://scoop.sh/)
+scoop install ffmpeg
+```
 
-To deploy as a free web interface using Hugging Face Spaces:
+> **Note on `pyannote.audio`:** You must accept the model license on Hugging Face:
+>
+> - Go to https://huggingface.co/pyannote/speaker-diarization-community-1 and input the correct information to Agree to the model license
+> - Go to https://huggingface.co/pyannote/segmentation-3.0 and click "Agree"
 
-1. Create a Hugging Face Space:
-   - Go to [Hugging Face Spaces](https://huggingface.co/spaces)
-   - Click "New Space"
-   - Choose a name for your space (e.g., "6.C395-chatbot")
-   - Select "Gradio" as the SDK
-   - Choose "CPU" as the hardware (free tier)
-   - Make it "Public" so others can use your chatbot
+### 2. Set up environment variables
 
-2. Prepare your files:
-   Your repository should already have all needed files:
-   ```
-   6.c395-chatbot/
-   ├── README.md           # Description of your chatbot
-   ├── app.py             # Your Gradio interface
-   ├── requirements.txt   # Already set up with needed dependencies
-   └── src/              # Your implementation files
-   ```
+Create a `.env` file in the project root:
 
-3. Push your code to the Space:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git remote add origin https://huggingface.co/spaces/YOUR_USERNAME/YOUR_SPACE_NAME
-   git push -u origin main
-   ```
+```
+HF_TOKEN=hf_your_token_here
+ANTHROPIC_API_KEY=sk-ant-your_key_here
+```
 
-4. Add your HF_TOKEN to the space as a secret.
-   - Go to Files.
-   - Go to Settings.
-   - Under secrets, add HF_TOKEN.
-   
+Get your Hugging Face token at https://huggingface.co/settings/tokens
+Get your Anthropic API key at https://console.anthropic.com
 
-5. Important Free Tier Considerations:
-   - The default model (meta-llama/Llama-3.1-8B-Instruct) runs via HuggingFace's Inference Providers, not on your Space's CPU. Your Space just hosts the Gradio UI.
-   - Free HuggingFace accounts have a limited monthly credit quota for Inference Providers. You may hit a 402 "Payment Required" error if you exceed it. To conserve credits, test locally when possible (`python app.py`) and avoid unnecessary requests.
-   - The interface might queue requests when multiple users access it. Sometimes there will be 503 errors. Just try again a few seconds later.
+---
 
-6. After Deployment:
-   - Your chatbot will be available at: `https://huggingface.co/spaces/YOUR_USERNAME/YOUR_SPACE_NAME`
-   - Anyone can use it through their web browser
-   - You can update the deployment anytime by pushing changes:
-     ```bash
-     git add .
-     git commit -m "Update chatbot"
-     git push
-     ```
+## Running the Pipeline
 
-7. Troubleshooting:
-   - Check the Space's logs if the chatbot isn't working
-   - Verify the chatbot works locally before deploying
-   - Remember free tier has limited resources. Sometimes if you get a 503 error it means the server is overloaded. Just try again a few seconds later.
+### Step 1: Transcribe and diarize
 
+```bash
+python src/transcribe.py --audio data/2025-09-10-CCTV.mp3
+```
+
+**Output:** `data/transcripts/2025-09-10_diarized.json`
+
+> ⏱ **CPU timing:** Expect ~30–60 minutes per 4–6 hour recording on CPU.
+> The script uses Whisper `large-v3-turbo` with `int8` quantization for maximum
+> CPU efficiency. This is a one-time cost.
+
+Repeat for each audio file:
+
+```bash
+python src/transcribe.py --audio data/2025-09-27-CCTV.mp3
+python src/transcribe.py --audio data/2025-09-28-CCTV.mp3
+```
+
+---
+
+### Step 2: Identify speakers
+
+```bash
+python src/identify_speakers.py --transcripts data/transcripts/
+```
+
+**Output:** `data/speaker_map.json`
+
+This script uses heuristics (moderator introductions, self-identification)
+to guess which `SPEAKER_XX` label corresponds to which candidate.
+**You must review and edit this file.** Open it and:
+
+- Set each `"name"` to the candidate's actual full name (or `null` for unknowns)
+- Set `"role"` to `"candidate"` or `"moderator"`
+- Set `"include_in_quiz"` to `false` for moderators and anyone not running
+
+Example `speaker_map.json` after editing:
+
+```json
+{
+  "SPEAKER_00": {
+    "name": "Alice Johnson",
+    "role": "moderator",
+    "include_in_quiz": false,
+    ...
+  },
+  "SPEAKER_01": {
+    "name": "Bob Chen",
+    "role": "candidate",
+    "include_in_quiz": true,
+    ...
+  }
+}
+```
+
+The `word_count` field is useful: the moderator is usually the highest-word-count
+non-candidate speaker.
+
+---
+
+### Step 3: Generate quiz questions
+
+```bash
+python src/generate_quiz.py
+```
+
+**Output:** `data/quiz_data.json`
+
+This calls the Claude API (`claude-opus-4-5`) to:
+
+1. Identify ~10 recurring policy themes from the transcripts
+2. Draft a quiz question for each theme
+3. Predict each candidate's Likert response WITH a verbatim supporting quote
+
+**Only questions where ≥2 candidates have real quotes are included.**
+Questions with insufficient transcript evidence are automatically dropped.
+
+---
+
+### Step 4: Deploy to GitHub Pages
+
+```bash
+cp data/quiz_data.json docs/quiz_data.json
+git add docs/
+git commit -m "Update quiz data"
+git push
+```
+
+Then enable GitHub Pages in your repo settings → Pages → Source: `main` branch, `/docs` folder.
+
+Your quiz will be live at: `https://YOUR_USERNAME.github.io/YOUR_REPO/`
+
+---
+
+## Testing Locally
+
+The `docs/` folder contains a working sample `quiz_data.json` with placeholder candidates.
+To test the frontend before running the pipeline:
+
+```bash
+cd docs
+python -m http.server 8080
+# Visit http://localhost:8080
+```
+
+> ⚠️ You must use a local server (not `file://`) because the quiz fetches
+> `quiz_data.json` via `fetch()`.
+
+---
+
+## Caveats and Transparency
+
+- Candidate positions are **inferred** from public statements at CCTV forums.
+  They may not reflect a candidate's full or current position.
+- Speaker diarization is imperfect — verify the `speaker_map.json` carefully.
+- The quiz shows verbatim quotes alongside every position to let voters judge
+  for themselves whether the inference is fair.
+- This tool is nonpartisan and does not endorse any candidate.
+
+---
+
+## Adding More Forum Recordings
+
+When you have the Sep 27 and Sep 28 recordings:
+
+1. Run `transcribe.py` on each new file
+2. Re-run `identify_speakers.py` (it reads all `*_diarized.json` files at once)
+3. Re-check `speaker_map.json` — new speakers from new dates will appear
+4. Re-run `generate_quiz.py` to incorporate all transcripts
+5. Copy to `docs/quiz_data.json` and redeploy

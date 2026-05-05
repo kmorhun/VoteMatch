@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VoteMatch — Cambridge School Committee 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1208;
+    --paper: #f5f0e8;
+    --paper-dark: #ede7d5;
+    --accent: #b5292a;
+    --accent-light: #e8d5d5;
+    --muted: #6b6254;
+    --rule: #c8bfaa;
+    --serif: 'Playfair Display', Georgia, serif;
+    --body: 'Source Serif 4', Georgia, serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-weight: 300;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    border-bottom: 3px double var(--ink);
+    padding: 1.5rem 2rem 1rem;
+    text-align: center;
+    position: relative;
+    background: var(--paper);
+  }
+
+  .masthead-eyebrow {
+    font-family: var(--body);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .masthead h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.25rem;
+  }
+
+  .masthead-rule {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    justify-content: center;
+    margin: 0.75rem 0;
+  }
+
+  .masthead-rule span { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); }
+  .masthead-rule::before,
+  .masthead-rule::after { content: ''; flex: 1; max-width: 120px; height: 1px; background: var(--rule); }
+
+  .masthead-sub {
+    font-family: var(--body);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ── INTRO SECTION ── */
+  #intro {
+    padding: 3rem 0 2rem;
+    text-align: center;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .intro-lede {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    max-width: 560px;
+    margin: 0 auto 2rem;
+  }
+
+  .disclaimer {
+    background: var(--paper-dark);
+    border-left: 3px solid var(--accent);
+    padding: 1rem 1.25rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-align: left;
+    margin-bottom: 2.5rem;
+    line-height: 1.5;
+  }
+
+  .btn-start {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 0.85rem 2.5rem;
+    cursor: pointer;
+    border: none;
+    letter-spacing: 0.03em;
+    transition: background 0.15s, transform 0.1s;
+    text-decoration: none;
+  }
+
+  .btn-start:hover { background: var(--accent); transform: translateY(-1px); }
+  .btn-start:active { transform: translateY(0); }
+
+  /* ── PROGRESS ── */
+  .progress-bar-wrap {
+    height: 3px;
+    background: var(--rule);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 0%;
+  }
+
+  .progress-label {
+    text-align: center;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 1rem 0 0;
+  }
+
+  /* ── QUIZ ── */
+  #quiz { display: none; padding: 2rem 0 4rem; }
+
+  .question-card {
+    animation: fadeUp 0.45s ease both;
+  }
+
+  .question-topic {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-family: var(--body);
+    margin-bottom: 0.5rem;
+  }
+
+  .question-text {
+    font-family: var(--serif);
+    font-size: clamp(1.3rem, 3.5vw, 1.75rem);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .likert-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (min-width: 500px) {
+    .likert-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .likert-option {
+    cursor: pointer;
+    border: 1.5px solid var(--rule);
+    padding: 0.85rem 0.5rem;
+    text-align: center;
+    transition: all 0.15s;
+    background: var(--paper);
+    position: relative;
+  }
+
+  .likert-option:hover {
+    border-color: var(--ink);
+    background: var(--paper-dark);
+  }
+
+  .likert-option.selected {
+    border-color: var(--accent);
+    background: var(--accent-light);
+  }
+
+  .likert-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .likert-label {
+    display: block;
+    font-size: 0.85rem;
+    line-height: 1.3;
+    color: var(--ink);
+    pointer-events: none;
+  }
+
+  .quiz-nav {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .btn-nav {
+    font-family: var(--body);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.25rem;
+    cursor: pointer;
+    border: 1.5px solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+    transition: all 0.15s;
+  }
+
+  .btn-nav:hover { background: var(--ink); color: var(--paper); }
+  .btn-nav.primary { background: var(--ink); color: var(--paper); }
+  .btn-nav.primary:hover { background: var(--accent); border-color: var(--accent); }
+  .btn-nav:disabled { opacity: 0.3; cursor: default; }
+  .btn-nav:disabled:hover { background: transparent; color: var(--ink); }
+
+  /* ── RESULTS ── */
+  #results { display: none; padding: 2rem 0 5rem; animation: fadeUp 0.5s ease both; }
+
+  .results-headline {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  .results-deck {
+    font-style: italic;
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .candidate-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--rule);
+    animation: fadeUp 0.4s ease both;
+  }
+
+  .candidate-row:first-child { border-top: 1px solid var(--rule); }
+
+  .candidate-rank {
+    font-family: var(--serif);
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 0.1rem;
+  }
+
+  .candidate-name {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+  .candidate-row.top-match .candidate-name { color: var(--accent); }
+  .candidate-row.top-match .candidate-rank { color: var(--accent); }
+
+  .match-pct {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 900;
+    min-width: 4.5rem;
+    text-align: right;
+    line-height: 1;
+  }
+
+  .candidate-row.top-match .match-pct { color: var(--accent); }
+
+  .match-bar-wrap {
+    grid-column: 1 / -1;
+    height: 4px;
+    background: var(--rule);
+    margin-top: 0.25rem;
+  }
+
+  .match-bar-fill {
+    height: 100%;
+    background: var(--ink);
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .candidate-row.top-match .match-bar-fill { background: var(--accent); }
+
+  /* ── QUOTE SECTION ── */
+  .quotes-section {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px double var(--ink);
+  }
+
+  .quotes-section h3 {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.01em;
+  }
+
+  .quote-accordion {
+    border: 1px solid var(--rule);
+    margin-bottom: 0.5rem;
+  }
+
+  .quote-accordion summary {
+    padding: 0.85rem 1rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--paper-dark);
+  }
+
+  .quote-accordion summary::-webkit-details-marker { display: none; }
+  .quote-accordion summary::after { content: '+'; font-size: 1.2rem; color: var(--muted); }
+  .quote-accordion[open] summary::after { content: '−'; }
+
+  .quote-accordion summary .q-topic { font-weight: 600; }
+  .quote-accordion summary .q-answer { color: var(--muted); font-size: 0.8rem; }
+
+  .quote-body {
+    padding: 1rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .quote-body blockquote {
+    font-style: italic;
+    color: var(--muted);
+    border-left: 3px solid var(--rule);
+    padding-left: 1rem;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .quote-cand-name {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.25rem;
+  }
+
+  .no-quote { color: var(--muted); font-style: italic; font-size: 0.85rem; }
+
+  /* ── RESTART ── */
+  .restart-wrap { text-align: center; margin-top: 3rem; }
+
+  /* ── LOADING ── */
+  #loading {
+    display: none;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+
+  .loading-text {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--muted);
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  /* ── ERROR ── */
+  #error-msg {
+    display: none;
+    background: var(--accent-light);
+    border: 1px solid var(--accent);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    font-size: 0.9rem;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-eyebrow">Cambridge, Massachusetts · School Committee Election</div>
+  <h1>VoteMatch</h1>
+  <div class="masthead-rule"><span>2025</span></div>
+  <p class="masthead-sub">Answer ten questions. Find out which candidates share your views.</p>
+</header>
+
+<div class="progress-bar-wrap" id="progress-wrap" style="display:none">
+  <div class="progress-bar-fill" id="progress-bar"></div>
+</div>
+
+<main class="container">
+
+  <!-- INTRO -->
+  <section id="intro">
+    <p class="intro-lede">
+      Local elections shape classrooms, budgets, and futures — yet most voters never learn
+      where candidates actually stand. VoteMatch changes that.
+    </p>
+    <div class="disclaimer">
+      <strong>How this works:</strong> Questions are drawn from topics debated at public CCTV candidate forums.
+      Candidate positions are inferred from verbatim statements made at those forums — every position
+      shown includes a direct quote. This tool is nonpartisan and does not endorse any candidate.
+    </div>
+    <button class="btn-start" id="btn-start">Take the Quiz →</button>
+  </section>
+
+  <!-- LOADING -->
+  <div id="loading">
+    <p class="loading-text">Loading quiz data…</p>
+  </div>
+
+  <!-- ERROR -->
+  <div id="error-msg"></div>
+
+  <!-- QUIZ -->
+  <section id="quiz">
+    <div class="progress-label" id="progress-label">Question 1 of 10</div>
+    <div class="question-card" id="question-card"></div>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="results">
+    <h2 class="results-headline" id="results-headline">Your closest matches</h2>
+    <p class="results-deck" id="results-deck"></p>
+    <div id="results-list"></div>
+
+    <div class="quotes-section">
+      <h3>What the candidates said</h3>
+      <div id="quotes-list"></div>
+    </div>
+
+    <div class="restart-wrap">
+      <button class="btn-start" id="btn-restart">Take the quiz again</button>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// ─────────────────────────────────────────────
+// CONFIG: path to your quiz data JSON
+// ─────────────────────────────────────────────
+const QUIZ_DATA_URL = './quiz_data.json';
+
+// ─────────────────────────────────────────────
+// STATE
+// ─────────────────────────────────────────────
+let quizData = null;
+let questions = [];
+let candidates = [];
+let answers = {};   // { questionIndex: "A"|"B"|"C"|"D" }
+let currentQ = 0;
+
+// ─────────────────────────────────────────────
+// DOM REFS
+// ─────────────────────────────────────────────
+const $intro        = document.getElementById('intro');
+const $loading      = document.getElementById('loading');
+const $errorMsg     = document.getElementById('error-msg');
+const $quiz         = document.getElementById('quiz');
+const $results      = document.getElementById('results');
+const $progressWrap = document.getElementById('progress-wrap');
+const $progressBar  = document.getElementById('progress-bar');
+const $progressLbl  = document.getElementById('progress-label');
+const $qCard        = document.getElementById('question-card');
+const $btnStart     = document.getElementById('btn-start');
+const $btnRestart   = document.getElementById('btn-restart');
+
+// ─────────────────────────────────────────────
+// BOOT
+// ─────────────────────────────────────────────
+$btnStart.addEventListener('click', startQuiz);
+$btnRestart.addEventListener('click', restartQuiz);
+
+async function startQuiz() {
+  $intro.style.display = 'none';
+  $loading.style.display = 'block';
+
+  try {
+    const res = await fetch(QUIZ_DATA_URL);
+    if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+    quizData = await res.json();
+  } catch (err) {
+    showError(`Could not load quiz data: ${err.message}<br>
+               Make sure quiz_data.json is in the same folder as index.html.`);
+    return;
+  }
+
+  questions  = quizData.questions  || [];
+  candidates = quizData.candidates || [];
+
+  if (questions.length === 0) {
+    showError('Quiz data contains no questions. Run generate_quiz.py to generate quiz_data.json.');
+    return;
+  }
+
+  $loading.style.display = 'none';
+  $progressWrap.style.display = 'block';
+  $quiz.style.display = 'block';
+  answers = {};
+  currentQ = 0;
+  renderQuestion();
+}
+
+function restartQuiz() {
+  $results.style.display = 'none';
+  answers = {};
+  currentQ = 0;
+  $quiz.style.display = 'block';
+  $progressWrap.style.display = 'block';
+  renderQuestion();
+}
+
+// ─────────────────────────────────────────────
+// QUESTION RENDERING
+// ─────────────────────────────────────────────
+function renderQuestion() {
+  const q = questions[currentQ];
+  const pct = Math.round((currentQ / questions.length) * 100);
+  $progressBar.style.width = pct + '%';
+  $progressLbl.textContent = `Question ${currentQ + 1} of ${questions.length}`;
+
+  const selected = answers[currentQ];
+
+  $qCard.innerHTML = `
+    <div class="question-topic">${escHtml(q.topic)}</div>
+    <div class="question-text">${escHtml(q.question)}</div>
+    <div class="likert-grid" role="radiogroup" aria-label="Your answer">
+      ${q.options.map(opt => `
+        <label class="likert-option ${selected === opt.id ? 'selected' : ''}">
+          <input type="radio" name="q${currentQ}" value="${opt.id}"
+                 ${selected === opt.id ? 'checked' : ''}>
+          <span class="likert-label">${escHtml(opt.text)}</span>
+        </label>
+      `).join('')}
+    </div>
+    <div class="quiz-nav">
+      <button class="btn-nav" id="btn-prev" ${currentQ === 0 ? 'disabled' : ''}>← Back</button>
+      <button class="btn-nav primary" id="btn-next">
+        ${currentQ === questions.length - 1 ? 'See Results →' : 'Next →'}
+      </button>
+    </div>
+  `;
+
+  // Wire up radio buttons
+  $qCard.querySelectorAll('input[type="radio"]').forEach(radio => {
+    radio.addEventListener('change', e => {
+      answers[currentQ] = e.target.value;
+      $qCard.querySelectorAll('.likert-option').forEach(el => el.classList.remove('selected'));
+      e.target.closest('.likert-option').classList.add('selected');
+    });
+  });
+
+  document.getElementById('btn-prev').addEventListener('click', () => {
+    currentQ--;
+    renderQuestion();
+  });
+
+  document.getElementById('btn-next').addEventListener('click', () => {
+    if (answers[currentQ] === undefined) {
+      // Gentle nudge — highlight options
+      $qCard.querySelectorAll('.likert-option').forEach(el => {
+        el.style.borderColor = 'var(--accent)';
+        setTimeout(() => el.style.borderColor = '', 600);
+      });
+      return;
+    }
+    if (currentQ === questions.length - 1) {
+      showResults();
+    } else {
+      currentQ++;
+      renderQuestion();
+    }
+  });
+
+  // Animate card
+  $qCard.style.animation = 'none';
+  void $qCard.offsetWidth; // reflow
+  $qCard.style.animation = '';
+  $qCard.classList.remove('question-card');
+  void $qCard.offsetWidth;
+  $qCard.classList.add('question-card');
+}
+
+// ─────────────────────────────────────────────
+// SCORING
+// ─────────────────────────────────────────────
+
+// Likert answer → numeric value (1-4, strongly agree = 4, strongly disagree = 1)
+const LIKERT_VAL = { A: 4, B: 3, C: 2, D: 1 };
+
+function scoreCandidate(candidateName) {
+  let totalWeight = 0;
+  let agreementScore = 0;
+
+  questions.forEach((q, idx) => {
+    const userAnswer = answers[idx];
+    const candidatePos = q.candidate_positions?.[candidateName];
+    if (!userAnswer || !candidatePos) return;
+
+    const userVal = LIKERT_VAL[userAnswer] ?? 2.5;
+    const candVal = LIKERT_VAL[candidatePos.answer] ?? 2.5;
+
+    // Distance: 0 (identical) to 3 (maximally different)
+    const distance = Math.abs(userVal - candVal);
+    // Agreement: 1 (identical) to 0 (max different)
+    const agreement = 1 - distance / 3;
+
+    agreementScore += agreement;
+    totalWeight += 1;
+  });
+
+  if (totalWeight === 0) return 0;
+  return Math.round((agreementScore / totalWeight) * 100);
+}
+
+// ─────────────────────────────────────────────
+// RESULTS
+// ─────────────────────────────────────────────
+function showResults() {
+  $quiz.style.display = 'none';
+  $progressWrap.style.display = 'none';
+  $progressBar.style.width = '100%';
+
+  // Score all candidates
+  const scored = candidates.map(c => ({
+    ...c,
+    score: scoreCandidate(c.name),
+  })).sort((a, b) => b.score - a.score);
+
+  const topScore = scored[0]?.score ?? 0;
+  const topName  = scored[0]?.name  ?? 'No candidate';
+
+  document.getElementById('results-headline').textContent = `You match most with ${topName}`;
+  document.getElementById('results-deck').textContent =
+    `Based on your answers to ${Object.keys(answers).length} questions about Cambridge School Committee issues.`;
+
+  // Candidate bars
+  const $list = document.getElementById('results-list');
+  $list.innerHTML = scored.map((c, i) => `
+    <div class="candidate-row ${i === 0 ? 'top-match' : ''}" style="animation-delay:${i * 0.08}s">
+      <div>
+        <div class="candidate-rank">${ordinal(i + 1)} match</div>
+        <div class="candidate-name">${escHtml(c.name)}</div>
+      </div>
+      <div class="match-pct">${c.score}%</div>
+      <div class="match-bar-wrap">
+        <div class="match-bar-fill" style="width:0%" data-pct="${c.score}"></div>
+      </div>
+    </div>
+  `).join('');
+
+  // Animate bars after paint
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    $list.querySelectorAll('.match-bar-fill').forEach(el => {
+      el.style.width = el.dataset.pct + '%';
+    });
+  }));
+
+  // Quote accordion — for each question, show where each candidate stood
+  const $quotes = document.getElementById('quotes-list');
+  $quotes.innerHTML = questions.map((q, idx) => {
+    const userAnswer = answers[idx];
+    const userLabel  = q.options.find(o => o.id === userAnswer)?.text ?? '—';
+
+    const quoteRows = Object.entries(q.candidate_positions || {}).map(([name, pos]) => {
+      const label = q.options.find(o => o.id === pos.answer)?.text ?? pos.answer;
+      const quote = pos.quote ? `<blockquote>"${escHtml(pos.quote)}"</blockquote>` : `<p class="no-quote">No direct quote available.</p>`;
+      return `
+        <div style="margin-bottom:1rem">
+          <div class="quote-cand-name">${escHtml(name)}</div>
+          <div style="font-size:0.85rem;margin-bottom:0.4rem;color:var(--muted)">${escHtml(label)}</div>
+          ${quote}
+        </div>
+      `;
+    }).join('');
+
+    return `
+      <details class="quote-accordion">
+        <summary>
+          <span class="q-topic">${escHtml(q.topic)}</span>
+          <span class="q-answer">You: ${escHtml(userLabel)}</span>
+        </summary>
+        <div class="quote-body">
+          <p style="font-size:0.9rem;margin-bottom:1rem;font-style:italic">${escHtml(q.question)}</p>
+          ${quoteRows}
+        </div>
+      </details>
+    `;
+  }).join('');
+
+  $results.style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─────────────────────────────────────────────
+// UTILS
+// ─────────────────────────────────────────────
+function escHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function ordinal(n) {
+  const s = ['th','st','nd','rd'];
+  const v = n % 100;
+  return n + (s[(v - 20) % 10] || s[v] || s[0]);
+}
+
+function showError(html) {
+  $loading.style.display = 'none';
+  $quiz.style.display = 'none';
+  $errorMsg.innerHTML = `<strong>Error:</strong> ${html}`;
+  $errorMsg.style.display = 'block';
+  $intro.style.display = 'block';
+}
+</script>
+</body>
+</html>

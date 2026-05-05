@@ -1,2 +1,13 @@
-python-dotenv>=1.1.0
-whisperx==
+# VoteMatch pipeline dependencies
+# Install with: pip install -r requirements.txt
+
+# Audio transcription + diarization
+whisperx>=3.1.1
+pyannote.audio>=3.1.0
+torch>=2.0.0
+
+# LLM for quiz generation
+anthropic>=0.25.0
+
+# Utilities
+python-dotenv>=1.0.0

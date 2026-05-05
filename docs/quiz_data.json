@@ -1,0 +1,92 @@
+{
+  "_comment": "This is a SAMPLE file for testing the frontend. Replace with the output of generate_quiz.py.",
+  "meta": {
+    "election": "Cambridge School Committee 2025",
+    "generated_by": "VoteMatch pipeline",
+    "note": "Candidate positions are inferred from public forum transcripts. Each position is accompanied by a verbatim quote from the candidate. This tool is for informational purposes only."
+  },
+  "candidates": [
+    {"name": "Candidate A", "speaker_id": "SPEAKER_00"},
+    {"name": "Candidate B", "speaker_id": "SPEAKER_01"},
+    {"name": "Candidate C", "speaker_id": "SPEAKER_02"},
+    {"name": "Candidate D", "speaker_id": "SPEAKER_03"}
+  ],
+  "questions": [
+    {
+      "topic": "Algebra I in 8th grade",
+      "question": "The district should offer Algebra I to all 8th graders who want it.",
+      "options": [
+        {"id": "A", "text": "Strongly agree"},
+        {"id": "B", "text": "Somewhat agree"},
+        {"id": "C", "text": "Somewhat disagree"},
+        {"id": "D", "text": "Strongly disagree"}
+      ],
+      "candidate_positions": {
+        "Candidate A": {
+          "answer": "A",
+          "quote": "Every student who is ready for Algebra I should have access to it in 8th grade, full stop."
+        },
+        "Candidate B": {
+          "answer": "B",
+          "quote": "I support expanding access to Algebra I but we need to make sure teachers are prepared."
+        },
+        "Candidate C": {
+          "answer": "C",
+          "quote": "We should focus on making sure all students are proficient in 7th grade math first."
+        },
+        "Candidate D": {
+          "answer": "D",
+          "quote": "Rushing students into algebra before they're ready does more harm than good."
+        }
+      }
+    },
+    {
+      "topic": "School start times",
+      "question": "High schools should start no earlier than 8:30 AM.",
+      "options": [
+        {"id": "A", "text": "Strongly agree"},
+        {"id": "B", "text": "Somewhat agree"},
+        {"id": "C", "text": "Somewhat disagree"},
+        {"id": "D", "text": "Strongly disagree"}
+      ],
+      "candidate_positions": {
+        "Candidate A": {
+          "answer": "B",
+          "quote": "The research on teen sleep is compelling. I'd support a later start if logistics allow."
+        },
+        "Candidate B": {
+          "answer": "A",
+          "quote": "Sleep deprivation is a public health crisis among teenagers. 8:30 should be the floor."
+        },
+        "Candidate C": {
+          "answer": "C",
+          "quote": "I understand the sleep science but this affects working families and childcare in real ways."
+        }
+      }
+    },
+    {
+      "topic": "Special education funding",
+      "question": "The district should increase its budget for special education services.",
+      "options": [
+        {"id": "A", "text": "Strongly agree"},
+        {"id": "B", "text": "Somewhat agree"},
+        {"id": "C", "text": "Somewhat disagree"},
+        {"id": "D", "text": "Strongly disagree"}
+      ],
+      "candidate_positions": {
+        "Candidate A": {
+          "answer": "A",
+          "quote": "We are legally and morally obligated to fully fund special education. It's non-negotiable."
+        },
+        "Candidate B": {
+          "answer": "A",
+          "quote": "Special education funding is one of the clearest areas where we've underinvested."
+        },
+        "Candidate D": {
+          "answer": "B",
+          "quote": "I support more resources for special education but we need to audit current spending first."
+        }
+      }
+    }
+  ]
+}
