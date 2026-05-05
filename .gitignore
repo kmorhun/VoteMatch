@@ -4,6 +4,6 @@ __pycache__/
 *.pyc
 .ipynb_checkpoints/
 models/
-data
+data/*.mp3
 .gitattributes
 .DS_Store

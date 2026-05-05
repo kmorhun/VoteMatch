@@ -1,0 +1,36 @@
+{
+  "SPEAKER_00": {
+    "name": "Chris Montero",
+    "role": "candidate",
+    "name_votes": {
+      "Chris Montero": 4,
+      "Again": 1
+    },
+    "word_count": 433,
+    "segment_count": 33,
+    "include_in_quiz": true
+  },
+  "SPEAKER_01": {
+    "name": "Elizabeth Hudson",
+    "role": "candidate",
+    "name_votes": {
+      "Elizabeth Hudson": 8,
+      "Sorry": 1,
+      "Yeah": 1
+    },
+    "word_count": 169,
+    "segment_count": 15,
+    "include_in_quiz": true
+  },
+  "SPEAKER_02": {
+    "name": "David Weinstein",
+    "role": "candidate",
+    "name_votes": {
+      "Great": 1,
+      "David Weinstein": 4
+    },
+    "word_count": 233,
+    "segment_count": 19,
+    "include_in_quiz": true
+  }
+}
