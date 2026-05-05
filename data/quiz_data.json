@@ -1,0 +1,22 @@
+{
+  "meta": {
+    "election": "Cambridge School Committee 2025",
+    "generated_by": "VoteMatch pipeline",
+    "note": "Candidate positions are inferred from public forum transcripts. Each position is accompanied by a verbatim quote from the candidate. This tool is for informational purposes only."
+  },
+  "candidates": [
+    {
+      "name": "Chris Montero",
+      "speaker_id": "SPEAKER_00"
+    },
+    {
+      "name": "Elizabeth Hudson",
+      "speaker_id": "SPEAKER_01"
+    },
+    {
+      "name": "David Weinstein",
+      "speaker_id": "SPEAKER_02"
+    }
+  ],
+  "questions": []
+}

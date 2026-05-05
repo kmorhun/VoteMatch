@@ -22,15 +22,28 @@ import os
 import re
 from pathlib import Path
 from dotenv import load_dotenv
-import anthropic
+# import anthropic #change to free huggingface llm
+from huggingface_hub import InferenceClient
+from typing import List, Dict
+import requests
 
 load_dotenv()
 
-ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
-if not ANTHROPIC_API_KEY:
-    raise EnvironmentError("ANTHROPIC_API_KEY not set in .env file.")
+# ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+# if not ANTHROPIC_API_KEY:
+#     raise EnvironmentError("ANTHROPIC_API_KEY not set in .env file.")
 
-client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+# client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+
+HF_TOKEN = os.getenv("HF_TOKEN")
+if not HF_TOKEN:
+    raise EnvironmentError("HF_TOKEN not set in .env file.")
+
+BASE_MODEL = "meta-llama/Llama-3.1-8B-Instruct"
+MY_MODEL = None  # Set this if you create a finetuned model
+model_id = MY_MODEL if MY_MODEL else BASE_MODEL
+client = InferenceClient(model=model_id, token=HF_TOKEN)
+
 
 # Likert scale answer options (same for every question)
 LIKERT_OPTIONS = [
@@ -43,7 +56,7 @@ LIKERT_OPTIONS = [
 TARGET_QUESTIONS = 10  # aim for this many questions
 
 
-def load_transcripts(transcript_dir: str) -> list[dict]:
+def load_transcripts(transcript_dir: str) -> List[Dict]:
     transcript_dir = Path(transcript_dir)
     transcripts = []
     for f in sorted(transcript_dir.glob("*_diarized.json")):
@@ -57,7 +70,7 @@ def load_speaker_map(speaker_map_path: str) -> dict:
         return json.load(f)
 
 
-def build_candidate_corpora(transcripts: list[dict], speaker_map: dict) -> dict[str, list[str]]:
+def build_candidate_corpora(transcripts: List[Dict], speaker_map: Dict) -> Dict[str, List[str]]:
     """
     Build a per-candidate corpus of their spoken text.
     Returns: {candidate_name: [utterances...]}
@@ -80,7 +93,7 @@ def build_candidate_corpora(transcripts: list[dict], speaker_map: dict) -> dict[
     return corpora
 
 
-def build_full_corpus_text(corpora: dict[str, list[str]]) -> str:
+def build_full_corpus_text(corpora: Dict[str, List[str]]) -> str:
     """Format the candidate corpora into a labeled text block for the LLM."""
     parts = []
     for candidate, utterances in corpora.items():
@@ -92,7 +105,7 @@ def build_full_corpus_text(corpora: dict[str, list[str]]) -> str:
     return "\n\n".join(parts)
 
 
-def generate_questions_and_positions(corpus_text: str, candidates: list[str]) -> list[dict]:
+def generate_questions_and_positions(corpus_text: str, candidates: List[str]) -> List[Dict]:
     """
     Ask Claude to:
     1. Identify key recurring themes/issues from the transcripts
@@ -158,14 +171,11 @@ Respond ONLY with valid JSON in exactly this format:
 Candidates to include: {candidate_list}
 Return JSON only, no other text."""
 
-    print("  Calling Claude API to generate quiz questions...")
-    response = client.messages.create(
-        model="claude-opus-4-5",
-        max_tokens=8000,
-        messages=[{"role": "user", "content": prompt}],
-    )
-
-    raw = response.content[0].text.strip()
+    print("  Calling [free huggingface] API to generate quiz questions...")
+    messages = [{"role": "user", "content": prompt}]
+    response = client.chat_completion(messages=messages)
+    print("wohoo there is a response")
+    raw = response.choices[0].message.content.strip()
 
     # Strip markdown code fences if present
     raw = re.sub(r"^```(?:json)?\s*", "", raw)
@@ -174,7 +184,7 @@ Return JSON only, no other text."""
     return json.loads(raw)["questions"]
 
 
-def validate_and_filter_questions(raw_questions: list[dict]) -> list[dict]:
+def validate_and_filter_questions(raw_questions: List[Dict]) -> List[Dict]:
     """
     Filter out:
     - Questions where no candidate has a non-null quote
@@ -213,7 +223,7 @@ def validate_and_filter_questions(raw_questions: list[dict]) -> list[dict]:
     return valid_questions
 
 
-def build_quiz_data(questions: list[dict], speaker_map: dict) -> dict:
+def build_quiz_data(questions: List[Dict], speaker_map: Dict) -> Dict:
     """
     Build the final quiz_data.json structure consumed by the frontend.
     """
