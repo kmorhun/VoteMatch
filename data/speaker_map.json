@@ -1,7 +1,9 @@
 {
-  "SPEAKER_00": {
+  "2025-09-10/SPEAKER_00": {
     "name": "Caitlin Duby",
     "role": "candidate",
+    "source_file": "2025-09-10",
+    "speaker_id": "SPEAKER_00",
     "name_votes": {
       "Caitlin Duby": 4,
       "Caitlin": 1
@@ -10,9 +12,11 @@
     "segment_count": 63,
     "include_in_quiz": true
   },
-  "SPEAKER_01": {
+  "2025-09-10/SPEAKER_01": {
     "name": "Richard Harding",
     "role": "candidate",
+    "source_file": "2025-09-10",
+    "speaker_id": "SPEAKER_01",
     "name_votes": {
       "Richard Harding": 4,
       "Paris": 1
@@ -21,33 +25,35 @@
     "segment_count": 82,
     "include_in_quiz": true
   },
-  "SPEAKER_02": {
+  "2025-09-10/SPEAKER_02": {
     "name": "Chris Montero",
-    "role": "moderator",
+    "role": "candidate",
+    "source_file": "2025-09-10",
+    "speaker_id": "SPEAKER_02",
     "name_votes": {
       "Chris Montero": 4,
-      "Again": 2,
       "Otherwise": 1,
       "Louisa": 1
     },
     "word_count": 1563,
     "segment_count": 164,
-    "include_in_quiz": false
+    "include_in_quiz": true
   },
-  "SPEAKER_03": {
-    "name": "Again",
+  "2025-09-10/SPEAKER_03": {
+    "name": null,
     "role": "candidate",
-    "name_votes": {
-      "Again": 1,
-      "Second": 1
-    },
+    "source_file": "2025-09-10",
+    "speaker_id": "SPEAKER_03",
+    "name_votes": {},
     "word_count": 1227,
     "segment_count": 81,
     "include_in_quiz": true
   },
-  "SPEAKER_04": {
+  "2025-09-10/SPEAKER_04": {
     "name": "Joel Patterson",
     "role": "candidate",
+    "source_file": "2025-09-10",
+    "speaker_id": "SPEAKER_04",
     "name_votes": {
       "Joel Patterson": 4
     },
@@ -55,12 +61,13 @@
     "segment_count": 26,
     "include_in_quiz": true
   },
-  "SPEAKER_05": {
+  "2025-09-10/SPEAKER_05": {
     "name": "Laqueen Battle",
     "role": "candidate",
+    "source_file": "2025-09-10",
+    "speaker_id": "SPEAKER_05",
     "name_votes": {
       "Laqueen Arlene Battle": 4,
-      "Again": 4,
       "Laqueen Battle": 12,
       "Lately": 1,
       "Okay": 1,
@@ -70,13 +77,13 @@
     "segment_count": 115,
     "include_in_quiz": true
   },
-  "SPEAKER_06": {
+  "2025-09-10/SPEAKER_06": {
     "name": "Eugenia Shraha",
     "role": "candidate",
+    "source_file": "2025-09-10",
+    "speaker_id": "SPEAKER_06",
     "name_votes": {
-      "Sorry": 1,
       "Eugenia Shraha": 8,
-      "Yeah": 2,
       "Anyway": 1,
       "Finally": 1,
       "Eugenia Schraha": 4
@@ -85,14 +92,14 @@
     "segment_count": 102,
     "include_in_quiz": true
   },
-  "SPEAKER_07": {
+  "2025-09-10/SPEAKER_07": {
     "name": "Lily Havstad",
     "role": "candidate",
+    "source_file": "2025-09-10",
+    "speaker_id": "SPEAKER_07",
     "name_votes": {
       "Lily Havstad": 4,
       "Previously": 1,
-      "Yeah": 2,
-      "Secondly": 1,
       "Furthermore": 1,
       "Lilly Habstead": 4
     },
@@ -100,45 +107,45 @@
     "segment_count": 64,
     "include_in_quiz": true
   },
-  "SPEAKER_08": {
-    "name": "Yeah",
+  "2025-09-10/SPEAKER_08": {
+    "name": null,
     "role": "candidate",
-    "name_votes": {
-      "Yeah": 1,
-      "Look": 1
-    },
+    "source_file": "2025-09-10",
+    "speaker_id": "SPEAKER_08",
+    "name_votes": {},
     "word_count": 1286,
     "segment_count": 93,
     "include_in_quiz": true
   },
-  "SPEAKER_09": {
-    "name": "Judgingly",
+  "2025-09-10/SPEAKER_09": {
+    "name": "One",
     "role": "candidate",
+    "source_file": "2025-09-10",
+    "speaker_id": "SPEAKER_09",
     "name_votes": {
-      "Secondly": 1,
       "One": 1,
-      "Second": 1,
       "Currently": 1,
-      "Actually": 1,
-      "Judgingly": 2
+      "Actually": 1
     },
     "word_count": 1200,
     "segment_count": 89,
     "include_in_quiz": true
   },
-  "SPEAKER_10": {
-    "name": "Yeah",
+  "2025-09-10/SPEAKER_10": {
+    "name": null,
     "role": "candidate",
-    "name_votes": {
-      "Yeah": 1
-    },
+    "source_file": "2025-09-10",
+    "speaker_id": "SPEAKER_10",
+    "name_votes": {},
     "word_count": 925,
     "segment_count": 68,
     "include_in_quiz": true
   },
-  "SPEAKER_11": {
+  "2025-09-10/SPEAKER_11": {
     "name": "David Weinstein",
     "role": "candidate",
+    "source_file": "2025-09-10",
+    "speaker_id": "SPEAKER_11",
     "name_votes": {
       "Great": 1,
       "David Weinstein": 8,
@@ -148,9 +155,11 @@
     "segment_count": 87,
     "include_in_quiz": true
   },
-  "SPEAKER_12": {
+  "2025-09-10/SPEAKER_12": {
     "name": "Jane Hershey",
     "role": "candidate",
+    "source_file": "2025-09-10",
+    "speaker_id": "SPEAKER_12",
     "name_votes": {
       "Jane Hershey": 12,
       "Informally": 1
@@ -159,9 +168,11 @@
     "segment_count": 63,
     "include_in_quiz": true
   },
-  "SPEAKER_13": {
+  "2025-09-10/SPEAKER_13": {
     "name": "Alex Bowers",
     "role": "candidate",
+    "source_file": "2025-09-10",
+    "speaker_id": "SPEAKER_13",
     "name_votes": {
       "Alex Bowers": 8
     },
@@ -169,13 +180,13 @@
     "segment_count": 47,
     "include_in_quiz": true
   },
-  "SPEAKER_14": {
+  "2025-09-10/SPEAKER_14": {
     "name": "Elizabeth Hudson",
     "role": "candidate",
+    "source_file": "2025-09-10",
+    "speaker_id": "SPEAKER_14",
     "name_votes": {
       "Elizabeth Hudson": 16,
-      "Yeah": 1,
-      "Again": 1,
       "Practically": 1,
       "Also": 2
     },
@@ -183,17 +194,21 @@
     "segment_count": 190,
     "include_in_quiz": true
   },
-  "SPEAKER_15": {
+  "2025-09-10/SPEAKER_15": {
     "name": null,
     "role": "candidate",
+    "source_file": "2025-09-10",
+    "speaker_id": "SPEAKER_15",
     "name_votes": {},
     "word_count": 251,
     "segment_count": 41,
     "include_in_quiz": true
   },
-  "SPEAKER_16": {
+  "2025-09-10/SPEAKER_16": {
     "name": "Jess Goetz",
     "role": "candidate",
+    "source_file": "2025-09-10",
+    "speaker_id": "SPEAKER_16",
     "name_votes": {
       "Jess Goetz": 4,
       "Honestly": 1,
@@ -203,12 +218,400 @@
     "segment_count": 70,
     "include_in_quiz": true
   },
-  "UNKNOWN": {
+  "2025-09-10/UNKNOWN": {
     "name": null,
     "role": "candidate",
+    "source_file": "2025-09-10",
+    "speaker_id": "UNKNOWN",
     "name_votes": {},
     "word_count": 15,
     "segment_count": 4,
+    "include_in_quiz": true
+  },
+  "2025-09-27/SPEAKER_00": {
+    "name": "Caitlin Dube",
+    "role": "candidate",
+    "source_file": "2025-09-27",
+    "speaker_id": "SPEAKER_00",
+    "name_votes": {
+      "Caitlin Dube": 4
+    },
+    "word_count": 1437,
+    "segment_count": 75,
+    "include_in_quiz": true
+  },
+  "2025-09-27/SPEAKER_01": {
+    "name": "Jia Jingli",
+    "role": "candidate",
+    "source_file": "2025-09-27",
+    "speaker_id": "SPEAKER_01",
+    "name_votes": {
+      "Jia Jingli": 4
+    },
+    "word_count": 1382,
+    "segment_count": 83,
+    "include_in_quiz": true
+  },
+  "2025-09-27/SPEAKER_02": {
+    "name": null,
+    "role": "candidate",
+    "source_file": "2025-09-27",
+    "speaker_id": "SPEAKER_02",
+    "name_votes": {},
+    "word_count": 577,
+    "segment_count": 46,
+    "include_in_quiz": true
+  },
+  "2025-09-27/SPEAKER_03": {
+    "name": "Eugenia Shraha",
+    "role": "candidate",
+    "source_file": "2025-09-27",
+    "speaker_id": "SPEAKER_03",
+    "name_votes": {
+      "Eugenia Shraha": 4
+    },
+    "word_count": 1817,
+    "segment_count": 105,
+    "include_in_quiz": true
+  },
+  "2025-09-27/SPEAKER_04": {
+    "name": "Annie Coburn",
+    "role": "candidate",
+    "source_file": "2025-09-27",
+    "speaker_id": "SPEAKER_04",
+    "name_votes": {
+      "Annie Coburn": 4,
+      "Mostly": 1,
+      "Jose": 1,
+      "Alex": 1
+    },
+    "word_count": 1091,
+    "segment_count": 81,
+    "include_in_quiz": true
+  },
+  "2025-09-27/SPEAKER_05": {
+    "name": "Lily Hafstead",
+    "role": "candidate",
+    "source_file": "2025-09-27",
+    "speaker_id": "SPEAKER_05",
+    "name_votes": {
+      "Lily Hafstead": 4,
+      "Leadership": 1
+    },
+    "word_count": 1958,
+    "segment_count": 130,
+    "include_in_quiz": true
+  },
+  "2025-09-27/SPEAKER_06": {
+    "name": null,
+    "role": "candidate",
+    "source_file": "2025-09-27",
+    "speaker_id": "SPEAKER_06",
+    "name_votes": {},
+    "word_count": 1251,
+    "segment_count": 63,
+    "include_in_quiz": true
+  },
+  "2025-09-27/SPEAKER_07": {
+    "name": "Jose Luis Rojas",
+    "role": "candidate",
+    "source_file": "2025-09-27",
+    "speaker_id": "SPEAKER_07",
+    "name_votes": {
+      "Jose Luis Rojas": 4,
+      "Eddie": 1,
+      "Great": 1
+    },
+    "word_count": 1146,
+    "segment_count": 92,
+    "include_in_quiz": true
+  },
+  "2025-09-27/SPEAKER_08": {
+    "name": "David Weinstein",
+    "role": "candidate",
+    "source_file": "2025-09-27",
+    "speaker_id": "SPEAKER_08",
+    "name_votes": {
+      "David Weinstein": 4,
+      "Carol Lynn Hunter": 4,
+      "Subsequently": 1,
+      "There": 1,
+      "Unfortunately": 1,
+      "Also": 1
+    },
+    "word_count": 2059,
+    "segment_count": 148,
+    "include_in_quiz": true
+  },
+  "2025-09-27/SPEAKER_09": {
+    "name": "Nico Emack",
+    "role": "candidate",
+    "source_file": "2025-09-27",
+    "speaker_id": "SPEAKER_09",
+    "name_votes": {
+      "Nico Emack": 4,
+      "Earlier": 1,
+      "Okay": 1
+    },
+    "word_count": 1189,
+    "segment_count": 90,
+    "include_in_quiz": true
+  },
+  "2025-09-27/SPEAKER_10": {
+    "name": "Chad",
+    "role": "candidate",
+    "source_file": "2025-09-27",
+    "speaker_id": "SPEAKER_10",
+    "name_votes": {
+      "Chad": 1,
+      "Like": 1
+    },
+    "word_count": 1760,
+    "segment_count": 107,
+    "include_in_quiz": true
+  },
+  "2025-09-27/SPEAKER_11": {
+    "name": "Arjun Jay Kumar",
+    "role": "candidate",
+    "source_file": "2025-09-27",
+    "speaker_id": "SPEAKER_11",
+    "name_votes": {
+      "Arjun Jay Kumar": 4,
+      "Also": 1
+    },
+    "word_count": 1511,
+    "segment_count": 101,
+    "include_in_quiz": true
+  },
+  "2025-09-27/SPEAKER_12": {
+    "name": "Jess Getz",
+    "role": "candidate",
+    "source_file": "2025-09-27",
+    "speaker_id": "SPEAKER_12",
+    "name_votes": {
+      "Jess Getz": 4
+    },
+    "word_count": 911,
+    "segment_count": 58,
+    "include_in_quiz": true
+  },
+  "2025-09-27/SPEAKER_13": {
+    "name": "Alex Bowers",
+    "role": "candidate",
+    "source_file": "2025-09-27",
+    "speaker_id": "SPEAKER_13",
+    "name_votes": {
+      "Alex Bowers": 4,
+      "Someone": 1,
+      "Okay": 1,
+      "Very": 1
+    },
+    "word_count": 1442,
+    "segment_count": 96,
+    "include_in_quiz": true
+  },
+  "2025-09-27/UNKNOWN": {
+    "name": null,
+    "role": "candidate",
+    "source_file": "2025-09-27",
+    "speaker_id": "UNKNOWN",
+    "name_votes": {},
+    "word_count": 7,
+    "segment_count": 3,
+    "include_in_quiz": true
+  },
+  "2025-09-28/SPEAKER_00": {
+    "name": "David Weinstein",
+    "role": "candidate",
+    "source_file": "2025-09-28",
+    "speaker_id": "SPEAKER_00",
+    "name_votes": {
+      "David Weinstein": 8,
+      "However": 1,
+      "First": 1
+    },
+    "word_count": 2134,
+    "segment_count": 100,
+    "include_in_quiz": true
+  },
+  "2025-09-28/SPEAKER_01": {
+    "name": "Jess Goetz",
+    "role": "candidate",
+    "source_file": "2025-09-28",
+    "speaker_id": "SPEAKER_01",
+    "name_votes": {
+      "Jess Goetz": 4,
+      "Otherwise": 1
+    },
+    "word_count": 1635,
+    "segment_count": 75,
+    "include_in_quiz": true
+  },
+  "2025-09-28/SPEAKER_02": {
+    "name": "Laqueen Battle",
+    "role": "candidate",
+    "source_file": "2025-09-28",
+    "speaker_id": "SPEAKER_02",
+    "name_votes": {
+      "Unfortunately": 4,
+      "Laqueen Battle": 8,
+      "Laqueen Sheher": 4,
+      "Almost": 1,
+      "Hospitals": 1
+    },
+    "word_count": 1597,
+    "segment_count": 96,
+    "include_in_quiz": true
+  },
+  "2025-09-28/SPEAKER_03": {
+    "name": "Annie Coburn",
+    "role": "candidate",
+    "source_file": "2025-09-28",
+    "speaker_id": "SPEAKER_03",
+    "name_votes": {
+      "Annie Coburn": 4,
+      "However": 1,
+      "Okay": 1,
+      "Plain": 1
+    },
+    "word_count": 1248,
+    "segment_count": 89,
+    "include_in_quiz": true
+  },
+  "2025-09-28/SPEAKER_04": {
+    "name": "Lily Havstead",
+    "role": "candidate",
+    "source_file": "2025-09-28",
+    "speaker_id": "SPEAKER_04",
+    "name_votes": {
+      "Dwayne": 1,
+      "Lily Havstead": 4
+    },
+    "word_count": 1665,
+    "segment_count": 97,
+    "include_in_quiz": true
+  },
+  "2025-09-28/SPEAKER_05": {
+    "name": "Kathy Greeley",
+    "role": "candidate",
+    "source_file": "2025-09-28",
+    "speaker_id": "SPEAKER_05",
+    "name_votes": {
+      "Kathy Greeley": 4,
+      "Also": 1,
+      "Okay": 2,
+      "First": 1,
+      "Anne": 1
+    },
+    "word_count": 1418,
+    "segment_count": 171,
+    "include_in_quiz": true
+  },
+  "2025-09-28/SPEAKER_06": {
+    "name": "Alex Bowers",
+    "role": "candidate",
+    "source_file": "2025-09-28",
+    "speaker_id": "SPEAKER_06",
+    "name_votes": {
+      "Alex Bowers": 4,
+      "Traditionally": 1,
+      "Currently": 1,
+      "Definitely": 1,
+      "Ann": 1
+    },
+    "word_count": 1407,
+    "segment_count": 91,
+    "include_in_quiz": true
+  },
+  "2025-09-28/SPEAKER_07": {
+    "name": "Otherwise",
+    "role": "candidate",
+    "source_file": "2025-09-28",
+    "speaker_id": "SPEAKER_07",
+    "name_votes": {
+      "Otherwise": 1
+    },
+    "word_count": 1400,
+    "segment_count": 104,
+    "include_in_quiz": true
+  },
+  "2025-09-28/SPEAKER_08": {
+    "name": "Currently",
+    "role": "candidate",
+    "source_file": "2025-09-28",
+    "speaker_id": "SPEAKER_08",
+    "name_votes": {
+      "Currently": 1,
+      "Arjun": 1
+    },
+    "word_count": 1584,
+    "segment_count": 82,
+    "include_in_quiz": true
+  },
+  "2025-09-28/SPEAKER_09": {
+    "name": "Arjun Jaykumar",
+    "role": "candidate",
+    "source_file": "2025-09-28",
+    "speaker_id": "SPEAKER_09",
+    "name_votes": {
+      "Arjun Jaykumar": 4,
+      "First": 2,
+      "Otherwise": 1,
+      "Arjun Jay Kumar": 4
+    },
+    "word_count": 1986,
+    "segment_count": 130,
+    "include_in_quiz": true
+  },
+  "2025-09-28/SPEAKER_10": {
+    "name": "Dwayne Callender",
+    "role": "candidate",
+    "source_file": "2025-09-28",
+    "speaker_id": "SPEAKER_10",
+    "name_votes": {
+      "Dwayne Callender": 4,
+      "Dwayne": 2,
+      "Okay": 4
+    },
+    "word_count": 898,
+    "segment_count": 120,
+    "include_in_quiz": true
+  },
+  "2025-09-28/SPEAKER_11": {
+    "name": "Finally",
+    "role": "candidate",
+    "source_file": "2025-09-28",
+    "speaker_id": "SPEAKER_11",
+    "name_votes": {
+      "Finally": 1
+    },
+    "word_count": 1410,
+    "segment_count": 78,
+    "include_in_quiz": true
+  },
+  "2025-09-28/SPEAKER_12": {
+    "name": "Jiajing Li",
+    "role": "candidate",
+    "source_file": "2025-09-28",
+    "speaker_id": "SPEAKER_12",
+    "name_votes": {
+      "Jiajing Li": 4
+    },
+    "word_count": 1371,
+    "segment_count": 98,
+    "include_in_quiz": true
+  },
+  "2025-09-28/SPEAKER_13": {
+    "name": "Caitlin Duby",
+    "role": "candidate",
+    "source_file": "2025-09-28",
+    "speaker_id": "SPEAKER_13",
+    "name_votes": {
+      "Caitlin Duby": 4,
+      "Caitlin Dube": 4
+    },
+    "word_count": 1876,
+    "segment_count": 80,
     "include_in_quiz": true
   }
 }
