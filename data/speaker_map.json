@@ -229,7 +229,7 @@
     "include_in_quiz": false
   },
   "2025-09-27/SPEAKER_00": {
-    "name": "Caitlin Dube",
+    "name": "Caitlin E. Dube",
     "role": "candidate",
     "source_file": "2025-09-27",
     "speaker_id": "SPEAKER_00",
@@ -241,7 +241,7 @@
     "include_in_quiz": true
   },
   "2025-09-27/SPEAKER_01": {
-    "name": "Jia Jingli",
+    "name": "Jia-Jing Lee",
     "role": "candidate",
     "source_file": "2025-09-27",
     "speaker_id": "SPEAKER_01",
@@ -260,10 +260,10 @@
     "name_votes": {},
     "word_count": 577,
     "segment_count": 46,
-    "include_in_quiz": true
+    "include_in_quiz": false
   },
   "2025-09-27/SPEAKER_03": {
-    "name": "Eugenia Shraha",
+    "name": "Eugenia Schraa Huh",
     "role": "candidate",
     "source_file": "2025-09-27",
     "speaker_id": "SPEAKER_03",
@@ -275,7 +275,7 @@
     "include_in_quiz": true
   },
   "2025-09-27/SPEAKER_04": {
-    "name": "Annie Coburn",
+    "name": "Anne Mathilde Coburn",
     "role": "candidate",
     "source_file": "2025-09-27",
     "speaker_id": "SPEAKER_04",
@@ -290,7 +290,7 @@
     "include_in_quiz": true
   },
   "2025-09-27/SPEAKER_05": {
-    "name": "Lily Hafstead",
+    "name": "Lilly Havstad",
     "role": "candidate",
     "source_file": "2025-09-27",
     "speaker_id": "SPEAKER_05",
@@ -303,7 +303,7 @@
     "include_in_quiz": true
   },
   "2025-09-27/SPEAKER_06": {
-    "name": null,
+    "name": "Luisa de Paula Santos",
     "role": "candidate",
     "source_file": "2025-09-27",
     "speaker_id": "SPEAKER_06",
@@ -313,7 +313,7 @@
     "include_in_quiz": true
   },
   "2025-09-27/SPEAKER_07": {
-    "name": "Jose Luis Rojas",
+    "name": "Jose Luis Rojas Villarreal",
     "role": "candidate",
     "source_file": "2025-09-27",
     "speaker_id": "SPEAKER_07",
@@ -327,7 +327,7 @@
     "include_in_quiz": true
   },
   "2025-09-27/SPEAKER_08": {
-    "name": "David Weinstein",
+    "name": "Caroline Mary Lisette Hunter",
     "role": "candidate",
     "source_file": "2025-09-27",
     "speaker_id": "SPEAKER_08",
@@ -355,10 +355,10 @@
     },
     "word_count": 1189,
     "segment_count": 90,
-    "include_in_quiz": true
+    "include_in_quiz": false
   },
   "2025-09-27/SPEAKER_10": {
-    "name": "Chad",
+    "name": "David J. Weinstein",
     "role": "candidate",
     "source_file": "2025-09-27",
     "speaker_id": "SPEAKER_10",
@@ -371,7 +371,7 @@
     "include_in_quiz": true
   },
   "2025-09-27/SPEAKER_11": {
-    "name": "Arjun Jay Kumar",
+    "name": "Arjun Kent Jaikumar",
     "role": "candidate",
     "source_file": "2025-09-27",
     "speaker_id": "SPEAKER_11",
@@ -384,7 +384,7 @@
     "include_in_quiz": true
   },
   "2025-09-27/SPEAKER_12": {
-    "name": "Jess Getz",
+    "name": "Jessica Diaz Goetz",
     "role": "candidate",
     "source_file": "2025-09-27",
     "speaker_id": "SPEAKER_12",
@@ -418,10 +418,10 @@
     "name_votes": {},
     "word_count": 7,
     "segment_count": 3,
-    "include_in_quiz": true
+    "include_in_quiz": false
   },
   "2025-09-28/SPEAKER_00": {
-    "name": "David Weinstein",
+    "name": "David J. Weinstein",
     "role": "candidate",
     "source_file": "2025-09-28",
     "speaker_id": "SPEAKER_00",
@@ -435,7 +435,7 @@
     "include_in_quiz": true
   },
   "2025-09-28/SPEAKER_01": {
-    "name": "Jess Goetz",
+    "name": "Jessica Diaz Goetz",
     "role": "candidate",
     "source_file": "2025-09-28",
     "speaker_id": "SPEAKER_01",
@@ -448,7 +448,7 @@
     "include_in_quiz": true
   },
   "2025-09-28/SPEAKER_02": {
-    "name": "Laqueen Battle",
+    "name": "LaQueen Arleen Battle",
     "role": "candidate",
     "source_file": "2025-09-28",
     "speaker_id": "SPEAKER_02",
@@ -464,7 +464,7 @@
     "include_in_quiz": true
   },
   "2025-09-28/SPEAKER_03": {
-    "name": "Annie Coburn",
+    "name": "Anne Mathilde Coburn",
     "role": "candidate",
     "source_file": "2025-09-28",
     "speaker_id": "SPEAKER_03",
@@ -479,7 +479,7 @@
     "include_in_quiz": true
   },
   "2025-09-28/SPEAKER_04": {
-    "name": "Lily Havstead",
+    "name": "Lilly Havstad",
     "role": "candidate",
     "source_file": "2025-09-28",
     "speaker_id": "SPEAKER_04",
@@ -505,7 +505,7 @@
     },
     "word_count": 1418,
     "segment_count": 171,
-    "include_in_quiz": true
+    "include_in_quiz": false
   },
   "2025-09-28/SPEAKER_06": {
     "name": "Alex Bowers",
@@ -524,7 +524,7 @@
     "include_in_quiz": true
   },
   "2025-09-28/SPEAKER_07": {
-    "name": "Otherwise",
+    "name": "Jose Luis Rojas Villarreal",
     "role": "candidate",
     "source_file": "2025-09-28",
     "speaker_id": "SPEAKER_07",
@@ -536,7 +536,7 @@
     "include_in_quiz": true
   },
   "2025-09-28/SPEAKER_08": {
-    "name": "Currently",
+    "name": "Caroline Mary Lisette Hunter",
     "role": "candidate",
     "source_file": "2025-09-28",
     "speaker_id": "SPEAKER_08",
@@ -549,7 +549,7 @@
     "include_in_quiz": true
   },
   "2025-09-28/SPEAKER_09": {
-    "name": "Arjun Jaykumar",
+    "name": "Arjun Kent Jaikumar",
     "role": "candidate",
     "source_file": "2025-09-28",
     "speaker_id": "SPEAKER_09",
@@ -575,10 +575,10 @@
     },
     "word_count": 898,
     "segment_count": 120,
-    "include_in_quiz": true
+    "include_in_quiz": false
   },
   "2025-09-28/SPEAKER_11": {
-    "name": "Finally",
+    "name": "Luisa de Paula Santos",
     "role": "candidate",
     "source_file": "2025-09-28",
     "speaker_id": "SPEAKER_11",
@@ -590,7 +590,7 @@
     "include_in_quiz": true
   },
   "2025-09-28/SPEAKER_12": {
-    "name": "Jiajing Li",
+    "name": "Jia-Jing Lee",
     "role": "candidate",
     "source_file": "2025-09-28",
     "speaker_id": "SPEAKER_12",
@@ -602,7 +602,7 @@
     "include_in_quiz": true
   },
   "2025-09-28/SPEAKER_13": {
-    "name": "Caitlin Duby",
+    "name": "Caitlin E. Dube",
     "role": "candidate",
     "source_file": "2025-09-28",
     "speaker_id": "SPEAKER_13",
