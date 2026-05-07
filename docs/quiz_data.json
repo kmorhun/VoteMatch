@@ -1,90 +1,629 @@
 {
-  "_comment": "This is a SAMPLE file for testing the frontend. Replace with the output of generate_quiz.py.",
   "meta": {
     "election": "Cambridge School Committee 2025",
     "generated_by": "VoteMatch pipeline",
     "note": "Candidate positions are inferred from public forum transcripts. Each position is accompanied by a verbatim quote from the candidate. This tool is for informational purposes only."
   },
   "candidates": [
-    {"name": "Candidate A", "speaker_id": "SPEAKER_00"},
-    {"name": "Candidate B", "speaker_id": "SPEAKER_01"},
-    {"name": "Candidate C", "speaker_id": "SPEAKER_02"},
-    {"name": "Candidate D", "speaker_id": "SPEAKER_03"}
+    {
+      "name": "Caitlin E. Dube",
+      "speaker_id": "2025-09-10/SPEAKER_00"
+    },
+    {
+      "name": "Richard N. Harding Jr",
+      "speaker_id": "2025-09-10/SPEAKER_01"
+    },
+    {
+      "name": "Arjun Kent Jaikumar",
+      "speaker_id": "2025-09-10/SPEAKER_03"
+    },
+    {
+      "name": "LaQueen Arleen Battle",
+      "speaker_id": "2025-09-10/SPEAKER_05"
+    },
+    {
+      "name": "Eugenia Schraa Huh",
+      "speaker_id": "2025-09-10/SPEAKER_06"
+    },
+    {
+      "name": "Lilly Havstad",
+      "speaker_id": "2025-09-10/SPEAKER_07"
+    },
+    {
+      "name": "Anne Mathilde Coburn",
+      "speaker_id": "2025-09-10/SPEAKER_08"
+    },
+    {
+      "name": "Jia-Jing Lee",
+      "speaker_id": "2025-09-10/SPEAKER_09"
+    },
+    {
+      "name": "Luisa de Paula Santos",
+      "speaker_id": "2025-09-10/SPEAKER_10"
+    },
+    {
+      "name": "David J. Weinstein",
+      "speaker_id": "2025-09-10/SPEAKER_11"
+    },
+    {
+      "name": "Jane Hirschi",
+      "speaker_id": "2025-09-10/SPEAKER_12"
+    },
+    {
+      "name": "Alex Bowers",
+      "speaker_id": "2025-09-10/SPEAKER_13"
+    },
+    {
+      "name": "Elizabeth Hudson",
+      "speaker_id": "2025-09-10/SPEAKER_14"
+    },
+    {
+      "name": "Jessica Diaz Goetz",
+      "speaker_id": "2025-09-10/SPEAKER_16"
+    },
+    {
+      "name": "Jose Luis Rojas Villarreal",
+      "speaker_id": "2025-09-27/SPEAKER_07"
+    },
+    {
+      "name": "Caroline Mary Lisette Hunter",
+      "speaker_id": "2025-09-27/SPEAKER_08"
+    }
   ],
   "questions": [
     {
       "topic": "Algebra I in 8th grade",
-      "question": "The district should offer Algebra I to all 8th graders who want it.",
+      "question": "The district should require all 8th graders to take Algebra I.",
       "options": [
-        {"id": "A", "text": "Strongly agree"},
-        {"id": "B", "text": "Somewhat agree"},
-        {"id": "C", "text": "Somewhat disagree"},
-        {"id": "D", "text": "Strongly disagree"}
+        {
+          "id": "A",
+          "text": "Strongly agree"
+        },
+        {
+          "id": "B",
+          "text": "Somewhat agree"
+        },
+        {
+          "id": "C",
+          "text": "Somewhat disagree"
+        },
+        {
+          "id": "D",
+          "text": "Strongly disagree"
+        }
       ],
       "candidate_positions": {
-        "Candidate A": {
+        "Richard N. Harding Jr": {
           "answer": "A",
-          "quote": "Every student who is ready for Algebra I should have access to it in 8th grade, full stop."
+          "quote": "All great public school systems offer algebra as a pathway by before the eighth grade. That's a fact."
         },
-        "Candidate B": {
+        "Arjun Kent Jaikumar": {
           "answer": "B",
-          "quote": "I support expanding access to Algebra I but we need to make sure teachers are prepared."
+          "quote": "It was a mistake to stop offering algebra in eighth grade, and it was a mistake to not involve educators in that decision."
         },
-        "Candidate C": {
+        "Jane Hirschi": {
+          "answer": "B",
+          "quote": "educators' voices, teachers' voices need to be involved in making curriculum change and curriculum implementation."
+        },
+        "Alex Bowers": {
           "answer": "C",
-          "quote": "We should focus on making sure all students are proficient in 7th grade math first."
+          "quote": "The software that was used was riddled with laws within the states. They were given the wrong answers in a handful of cases to the problems they were working on."
         },
-        "Candidate D": {
+        "Jessica Diaz Goetz": {
+          "answer": "B",
+          "quote": "I know that the tutoring that was promised by the district to sixth graders to help move them along into accelerated seventh grade and then algebra one and eighth grade didn't materialize at a lot of schools."
+        },
+        "Anne Mathilde Coburn": {
+          "answer": "A",
+          "quote": "Yes, there should be algebra in eighth grade. Yes, absolutely, teachers should be at the table."
+        },
+        "LaQueen Arleen Battle": {
           "answer": "D",
-          "quote": "Rushing students into algebra before they're ready does more harm than good."
+          "quote": "I do disagree with the curriculum that algebra should be in an eighth grade curriculum."
+        },
+        "David J. Weinstein": {
+          "answer": "A",
+          "quote": "I'm going to be really looking to make sure that we do in this Algebra 1 rollout, which is really still a new..."
         }
       }
     },
     {
-      "topic": "School start times",
-      "question": "High schools should start no earlier than 8:30 AM.",
+      "topic": "CEA seat at school committee table",
+      "question": "The Cambridge Education Association (teachers' union) should have a formal non-voting seat at school committee meetings.",
       "options": [
-        {"id": "A", "text": "Strongly agree"},
-        {"id": "B", "text": "Somewhat agree"},
-        {"id": "C", "text": "Somewhat disagree"},
-        {"id": "D", "text": "Strongly disagree"}
+        {
+          "id": "A",
+          "text": "Strongly agree"
+        },
+        {
+          "id": "B",
+          "text": "Somewhat agree"
+        },
+        {
+          "id": "C",
+          "text": "Somewhat disagree"
+        },
+        {
+          "id": "D",
+          "text": "Strongly disagree"
+        }
       ],
       "candidate_positions": {
-        "Candidate A": {
-          "answer": "B",
-          "quote": "The research on teen sleep is compelling. I'd support a later start if logistics allow."
-        },
-        "Candidate B": {
+        "Caitlin E. Dube": {
           "answer": "A",
-          "quote": "Sleep deprivation is a public health crisis among teenagers. 8:30 should be the floor."
+          "quote": "The CEA is our best opportunity to truly also enact authentic family engagement... we need to have educators as co-creators at the table from that set."
         },
-        "Candidate C": {
+        "Jia-Jing Lee": {
+          "answer": "A",
+          "quote": "Whatever decisions to be made for our children, it needs to be engagement between the caregivers and the teachers, driven by the teachers."
+        },
+        "Arjun Kent Jaikumar": {
+          "answer": "A",
+          "quote": "I would support a non-voting membership for the CEA on the school committee. We have management at the table every meeting, and we hear more from management than anybody else."
+        },
+        "Jane Hirschi": {
+          "answer": "B",
+          "quote": "educators' voices, teachers' voices need to be involved in making curriculum change and curriculum implementation."
+        },
+        "Elizabeth Hudson": {
+          "answer": "B",
+          "quote": "Come be part of the conversation. Deliberations may be another story, but being a part of the conversation, that's what I want to see."
+        },
+        "Eugenia Schraa Huh": {
           "answer": "C",
-          "quote": "I understand the sleep science but this affects working families and childcare in real ways."
+          "quote": "Inviting union representation to weigh in is not a shortcut to that really hard work of listening to the teachers on that particular issue."
+        },
+        "Lilly Havstad": {
+          "answer": "A",
+          "quote": "CEA has to be at the table. The educators must be at the table. I don't know how many times I've been to school committee meetings where there has been discussion and deliberation among members of the school committee and administrators, and they are fumbling to answer questions that CEA leadership sitting in the room could answer."
+        },
+        "David J. Weinstein": {
+          "answer": "A",
+          "quote": "We are not only looking to our educators to implement things that we decide we're going to do, but we really look to our educators to collaborate with us as we determine what steps we're going to take."
         }
       }
     },
     {
-      "topic": "Special education funding",
-      "question": "The district should increase its budget for special education services.",
+      "topic": "Controlled choice overhaul",
+      "question": "The district's controlled choice school enrollment system needs a comprehensive overhaul, not just minor adjustments.",
       "options": [
-        {"id": "A", "text": "Strongly agree"},
-        {"id": "B", "text": "Somewhat agree"},
-        {"id": "C", "text": "Somewhat disagree"},
-        {"id": "D", "text": "Strongly disagree"}
+        {
+          "id": "A",
+          "text": "Strongly agree"
+        },
+        {
+          "id": "B",
+          "text": "Somewhat agree"
+        },
+        {
+          "id": "C",
+          "text": "Somewhat disagree"
+        },
+        {
+          "id": "D",
+          "text": "Strongly disagree"
+        }
       ],
       "candidate_positions": {
-        "Candidate A": {
+        "Caitlin E. Dube": {
           "answer": "A",
-          "quote": "We are legally and morally obligated to fully fund special education. It's non-negotiable."
+          "quote": "I think we need a wholesale audit of the controlled choice program, and also we need to pilot some other choices before we commit to fully changing what we're doing as a district."
         },
-        "Candidate B": {
+        "Jia-Jing Lee": {
           "answer": "A",
-          "quote": "Special education funding is one of the clearest areas where we've underinvested."
+          "quote": "Currently, the control choice, it's not working... this is a system that we need to re-evaluate to make it completely fair."
         },
-        "Candidate D": {
+        "Arjun Kent Jaikumar": {
+          "answer": "A",
+          "quote": "I think we need to rigorously enforce high needs balancing in the lottery. I think we need to close loopholes that more privileged families are aware of, like the transfer system."
+        },
+        "Jane Hirschi": {
           "answer": "B",
-          "quote": "I support more resources for special education but we need to audit current spending first."
+          "quote": "I think I would start with a review. I think the last review was in 2013... that's where I would begin approaching school choice."
+        },
+        "Alex Bowers": {
+          "answer": "B",
+          "quote": "I think that one of the things that should be done is an audit of control choice and to ask why are parents making the choices that they do?"
+        },
+        "Jessica Diaz Goetz": {
+          "answer": "A",
+          "quote": "I think a big part of problem control choice right now is community buy-in... if we're going to have a system like this, we need to go full throat, we need to communicate to people the value of it."
+        },
+        "Anne Mathilde Coburn": {
+          "answer": "B",
+          "quote": "At a bare minimum, I'd have a state of the schools address that provides a snapshot of every single school."
+        },
+        "Eugenia Schraa Huh": {
+          "answer": "B",
+          "quote": "We all know control choice is faulty, but I think it's important that before we spend our time reinventing the wheel, it's we've got to start with what is the top priority here."
+        },
+        "Lilly Havstad": {
+          "answer": "A",
+          "quote": "The current controlled choice system is not working to achieve the goal of creating balanced school populations while also preserving a family's desire to have some choice."
+        },
+        "Luisa de Paula Santos": {
+          "answer": "A",
+          "quote": "I think there also needs to be know your rights, popular education sorts of trainings for lower income families who are not as knowledgeable about this system."
+        },
+        "LaQueen Arleen Battle": {
+          "answer": "B",
+          "quote": "It is a wonderful opportunity to be able to have a school choice program here in Cambridge. The parents, they do need the opportunity. They do need that choice that Cambridge does have."
+        }
+      }
+    },
+    {
+      "topic": "School closures",
+      "question": "The district should be willing to close underenrolled schools to consolidate resources.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Strongly agree"
+        },
+        {
+          "id": "B",
+          "text": "Somewhat agree"
+        },
+        {
+          "id": "C",
+          "text": "Somewhat disagree"
+        },
+        {
+          "id": "D",
+          "text": "Strongly disagree"
+        }
+      ],
+      "candidate_positions": {
+        "Caitlin E. Dube": {
+          "answer": "D",
+          "quote": "School closures are traumatic for teachers, students, and communities and have long-term effects. What I am open to is thinking about the programming that is currently in schools."
+        },
+        "Anne Mathilde Coburn": {
+          "answer": "C",
+          "quote": "I think we're still finding out some of the effects of KAlo's closure. That's TBD. So we don't know everything about what's going on now with controlled choice and enrollment."
+        },
+        "David J. Weinstein": {
+          "answer": "C",
+          "quote": "There's no plan to close any, so yes."
+        }
+      }
+    },
+    {
+      "topic": "City budget advocacy for schools",
+      "question": "The school committee should actively advocate to the city for a larger school budget rather than working within existing funding constraints.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Strongly agree"
+        },
+        {
+          "id": "B",
+          "text": "Somewhat agree"
+        },
+        {
+          "id": "C",
+          "text": "Somewhat disagree"
+        },
+        {
+          "id": "D",
+          "text": "Strongly disagree"
+        }
+      ],
+      "candidate_positions": {
+        "Caitlin E. Dube": {
+          "answer": "A",
+          "quote": "We need to use those resources wisely. We need to make sure that students have what they need, that we're deploying best practices across the city."
+        },
+        "Jia-Jing Lee": {
+          "answer": "A",
+          "quote": "We can definitely ask the big companies here, Biotex and Farmers, to contribute their part. And then, of course, we can look into the area where how we can be more efficient to maximize the money we have in our budget."
+        },
+        "Jane Hirschi": {
+          "answer": "C",
+          "quote": "I think when you have the responsibility to look at a budget, you have that responsibility to look at the details of it... I don't think that it's just an automatic asking for more."
+        },
+        "Elizabeth Hudson": {
+          "answer": "C",
+          "quote": "Know what those are. Know what your argument's going to be. Know how to go and make that argument... people cannot pay their mortgages with platitudes. They need details, and that is a full third of the job."
+        },
+        "Jessica Diaz Goetz": {
+          "answer": "A",
+          "quote": "If the city manager sends us a bottom line number, and then we have to build the budget from that, and that doesn't cover it, we have to go back and ask for more money."
+        },
+        "Luisa de Paula Santos": {
+          "answer": "A",
+          "quote": "Cambridge is one of the wealthiest cities in the world. And also, we are not taxing commercial residential buildings as much as Boston is. So if we did need more money, there are places where that can come from. I feel like it's a matter of political will."
+        }
+      }
+    },
+    {
+      "topic": "Proactive outreach to underrepresented families",
+      "question": "School committee members should proactively go into school communities and neighborhoods to engage underrepresented families, rather than relying on families to attend public meetings.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Strongly agree"
+        },
+        {
+          "id": "B",
+          "text": "Somewhat agree"
+        },
+        {
+          "id": "C",
+          "text": "Somewhat disagree"
+        },
+        {
+          "id": "D",
+          "text": "Strongly disagree"
+        }
+      ],
+      "candidate_positions": {
+        "Caitlin E. Dube": {
+          "answer": "A",
+          "quote": "We need to compensate educators for the additional time that that will take to make phone calls, to do text outreach, to attend events. We also need to think about funding events for families so that if caregivers want to attend, there's childcare, there's food."
+        },
+        "Jia-Jing Lee": {
+          "answer": "A",
+          "quote": "School committee members should always be very approachable, having regular office hours and also formal and informal dialogues, ongoing dialogues."
+        },
+        "Richard N. Harding Jr": {
+          "answer": "A",
+          "quote": "I think that the school community can do a better job by going into each school community and really having a safe place where people feel that they can be heard."
+        },
+        "Arjun Kent Jaikumar": {
+          "answer": "A",
+          "quote": "We have to be proactive about interacting with communities that don't trust us... being proactive and being physically present in a school community is the only way."
+        },
+        "Jane Hirschi": {
+          "answer": "A",
+          "quote": "I think the school committee members have a responsibility to hear those voices outside of those formal places as well, to be part of communities, various communities."
+        },
+        "Alex Bowers": {
+          "answer": "A",
+          "quote": "The school councils, I think, have been largely ignored, and they are a real place where people, both teachers, educators, and administrators, can get together and talk about the issues."
+        },
+        "Elizabeth Hudson": {
+          "answer": "A",
+          "quote": "Not only being reachable, but as many people have already pointed out, also reaching out to people... it's better understanding why they're poorly attended, what we're missing, and what else we could be doing."
+        },
+        "Jessica Diaz Goetz": {
+          "answer": "A",
+          "quote": "School committee members have an obligation to be responsive to the community members who reach out to them. Not just the loudest ones, not just the squeaky wheel getting the grease, but everybody who reaches out to you needs to be heard."
+        },
+        "Anne Mathilde Coburn": {
+          "answer": "A",
+          "quote": "I'd really like to see the entire school committee have scheduled regular office hours that they're at, that people know when to and where to expect them."
+        },
+        "Jose Luis Rojas Villarreal": {
+          "answer": "A",
+          "quote": "The first thing you need to do is listen and ask questions. As Arjun said, that's the most important thing."
+        },
+        "Eugenia Schraa Huh": {
+          "answer": "A",
+          "quote": "I think the outreach thing should go back to real fundamentals and basics. One thing I've heard a ton from parents at the doors, particularly in subsidized housing, is that they don't hear how their students are doing."
+        },
+        "Lilly Havstad": {
+          "answer": "A",
+          "quote": "Taking meetings to neighborhoods, to schools, different types of family engagement... building dialogue, not just between educators and families and students, but also between families."
+        },
+        "Luisa de Paula Santos": {
+          "answer": "A",
+          "quote": "Going to people who are not coming to the meetings, even if it means going door to door, hosting meetings at different buildings, doing block parties even so people can be in their neighborhood speaking to us."
+        },
+        "LaQueen Arleen Battle": {
+          "answer": "B",
+          "quote": "I would encourage the parents in the community to come to the school board meetings. We need your input. We need your say-so."
+        },
+        "David J. Weinstein": {
+          "answer": "A",
+          "quote": "I reach out and attend events and talk with parents, students, educators, organized groups like CPEC, CFCC, CalA, MBK, and individuals, and I'm present in the schools."
+        }
+      }
+    },
+    {
+      "topic": "Educator involvement in curriculum decisions",
+      "question": "Teachers should be meaningfully involved in curriculum decisions before implementation, not just consulted after policies are set.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Strongly agree"
+        },
+        {
+          "id": "B",
+          "text": "Somewhat agree"
+        },
+        {
+          "id": "C",
+          "text": "Somewhat disagree"
+        },
+        {
+          "id": "D",
+          "text": "Strongly disagree"
+        }
+      ],
+      "candidate_positions": {
+        "Caitlin E. Dube": {
+          "answer": "A",
+          "quote": "When we co-create policies together, we know that those policies are supported by teachers from the outset, and we also get feedback on how those policies are working."
+        },
+        "Jia-Jing Lee": {
+          "answer": "A",
+          "quote": "Whatever decisions to be made for our children, it needs to be engagement between the caregivers and the teachers, driven by the teachers."
+        },
+        "Arjun Kent Jaikumar": {
+          "answer": "A",
+          "quote": "It is a choice that the school committee has made over and over again for 10 years to push on with policies without involving educators in the process. And it's a choice that needs to stop now."
+        },
+        "Jane Hirschi": {
+          "answer": "A",
+          "quote": "Are teachers involved in helping to select the curriculum? Are they invited to be looking at how it's implemented in different districts as part of that decision making?"
+        },
+        "Alex Bowers": {
+          "answer": "A",
+          "quote": "I think one of the things that I would love to see, or I'm curious about, is how these policies or how these decisions are actually made. Was the policy trickle down from the administration?"
+        },
+        "Elizabeth Hudson": {
+          "answer": "A",
+          "quote": "You're the final and most important step in the implementation and you're the experts in the implementation. The community can weigh in on what skills we want... but you know how to implement it."
+        },
+        "Jessica Diaz Goetz": {
+          "answer": "A",
+          "quote": "I just think it is wild that they weren't asked how to do this. I have no answer except ask them, man. They're the ones in the school with the kids every single day."
+        },
+        "Anne Mathilde Coburn": {
+          "answer": "A",
+          "quote": "Of course, kids and teachers need to be at the table. Of course, caregivers need to be at the table as well."
+        },
+        "Eugenia Schraa Huh": {
+          "answer": "A",
+          "quote": "I think it's really important that in everything, any school policy, a lot of work be put into talking to the teachers involved."
+        },
+        "Lilly Havstad": {
+          "answer": "A",
+          "quote": "Had the district invested in developing those relationships and building trust in our teachers' union among our families, that had the union then had the voice to say, this is not going to work."
+        },
+        "Luisa de Paula Santos": {
+          "answer": "A",
+          "quote": "Top performing systems prioritize teacher collaboration and iterative improvement over top-down mandates... it needs to be a continuous iterative give and take process."
+        },
+        "David J. Weinstein": {
+          "answer": "A",
+          "quote": "We are not only looking to our educators to implement things that we decide we're going to do, but we really look to our educators to collaborate with us as we determine what steps we're going to take."
+        }
+      }
+    },
+    {
+      "topic": "Superintendent search",
+      "question": "The current superintendent search process should be halted and restarted due to serious concerns about its integrity.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Strongly agree"
+        },
+        {
+          "id": "B",
+          "text": "Somewhat agree"
+        },
+        {
+          "id": "C",
+          "text": "Somewhat disagree"
+        },
+        {
+          "id": "D",
+          "text": "Strongly disagree"
+        }
+      ],
+      "candidate_positions": {
+        "Richard N. Harding Jr": {
+          "answer": "C",
+          "quote": "If we were to stop the process, we'd be sending a message to all those who try to undermine it that we will not consider potentially a leader that can take us in the right direction."
+        },
+        "Elizabeth Hudson": {
+          "answer": "D",
+          "quote": "I've refused to call for a halt to the search because we need a good leader now. We know we have challenges and I'm not willing to soak up months to find a new interim."
+        },
+        "David J. Weinstein": {
+          "answer": "D",
+          "quote": "I do think that we owe it to our children to see this process through, and fully evaluate the well-qualified, dedicated leaders who've been selected as finalists through a national search."
+        }
+      }
+    },
+    {
+      "topic": "Expanding school programming diversity",
+      "question": "The district should expand diverse programming options (e.g., project-based learning, STEM, arts) across more schools to make controlled choice more meaningful.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Strongly agree"
+        },
+        {
+          "id": "B",
+          "text": "Somewhat agree"
+        },
+        {
+          "id": "C",
+          "text": "Somewhat disagree"
+        },
+        {
+          "id": "D",
+          "text": "Strongly disagree"
+        }
+      ],
+      "candidate_positions": {
+        "Caitlin E. Dube": {
+          "answer": "A",
+          "quote": "I am open to thinking about the programming that is currently in schools and how we can think about adding and augmenting programs to schools so that we are actually offering choice."
+        },
+        "Jia-Jing Lee": {
+          "answer": "A",
+          "quote": "We also need to make our schools unique and great, every school... we can make every school unique instead of certain schools a better choice for some families."
+        },
+        "Arjun Kent Jaikumar": {
+          "answer": "A",
+          "quote": "I think we should consider having sister schools across the district so that if you happen to be in East Cambridge and you like project-based learning, you shouldn't have to send your kid all the way to Graham and Parks to get it."
+        },
+        "Alex Bowers": {
+          "answer": "A",
+          "quote": "An audit of control choice and to ask why are parents making the choices that they do? Are they drawn to an immersion program, a Montessori program? And to find out perhaps maybe those types of programs should be expanded."
+        },
+        "Eugenia Schraa Huh": {
+          "answer": "A",
+          "quote": "The most important thing we can do to keep our balancing is to stay focused on the fundamental of scaling the programs that do work and hiring great principals for every school."
+        },
+        "Lilly Havstad": {
+          "answer": "A",
+          "quote": "Most highly subscribed elementary schools right now are the schools that are practicing truly engaged and inquiry-based learning practices, Montessori project-based learning... I'm really committed to standing up for engaged teaching and learning."
+        }
+      }
+    },
+    {
+      "topic": "Student voice in school committee",
+      "question": "Student representatives at school committee meetings should have a formal vote (even if non-binding) on policy decisions.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Strongly agree"
+        },
+        {
+          "id": "B",
+          "text": "Somewhat agree"
+        },
+        {
+          "id": "C",
+          "text": "Somewhat disagree"
+        },
+        {
+          "id": "D",
+          "text": "Strongly disagree"
+        }
+      ],
+      "candidate_positions": {
+        "Jia-Jing Lee": {
+          "answer": "A",
+          "quote": "What about changing the format of school committee meeting, makes it real meeting, and we can invite all great students in the high school to come and speak."
+        },
+        "Richard N. Harding Jr": {
+          "answer": "A",
+          "quote": "This school committee... those young students who are bright, they are part of..."
+        },
+        "Arjun Kent Jaikumar": {
+          "answer": "A",
+          "quote": "We should be engaging with students at upper schools, too, and hearing what their experiences are like."
+        },
+        "Jessica Diaz Goetz": {
+          "answer": "A",
+          "quote": "I'd like to see younger students included in that. You know, when they're in fifth grade, they have a really great curriculum about their Bill of Rights. So they know what their rights are, and so they should be at the table, and they should be allowed to present and vote, even in a non-binding way."
+        },
+        "Anne Mathilde Coburn": {
+          "answer": "A",
+          "quote": "When we figure out how student input impacts the educational policy in this district, could you let us know how we can get the caregiver input to also impact district policy."
+        },
+        "Lilly Havstad": {
+          "answer": "A",
+          "quote": "There's more we can do with the student representatives that are at our school committee meetings. They can actually vote. They're non-binding votes, but that's powerful. And if I'm elected, I will fight to make sure that our student representatives are allowed to vote."
+        },
+        "LaQueen Arleen Battle": {
+          "answer": "A",
+          "quote": "Student government. We definitely need to encourage more student government. We definitely need to encourage more student clubs... we have a say-so, and we want to learn, we want to know what's going on in our community."
         }
       }
     }

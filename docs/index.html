@@ -13,6 +13,8 @@
     --paper-dark: #ede7d5;
     --accent: #b5292a;
     --accent-light: #e8d5d5;
+    --agree: #2a6b45;
+    --agree-light: #d4ede0;
     --muted: #6b6254;
     --rule: #c8bfaa;
     --serif: 'Playfair Display', Georgia, serif;
@@ -392,6 +394,239 @@
 
   .no-quote { color: var(--muted); font-style: italic; font-size: 0.85rem; }
 
+  /* ── REVIEW ── */
+  #review { display: none; padding: 2rem 0 4rem; animation: fadeUp 0.5s ease both; }
+
+  .review-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .review-header h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+  }
+
+  .review-header p { font-style: italic; color: var(--muted); font-size: 1rem; }
+
+  .review-card {
+    border-bottom: 1px solid var(--rule);
+    padding: 1.75rem 0;
+    animation: fadeUp 0.4s ease both;
+  }
+
+  .review-question-text {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .review-sublabel {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .review-likert {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+  }
+
+  .review-likert-opt {
+    cursor: pointer;
+    border: 1.5px solid var(--rule);
+    padding: 0.45rem 0.75rem;
+    font-size: 0.8rem;
+    transition: all 0.15s;
+    background: var(--paper);
+    white-space: nowrap;
+  }
+
+  .review-likert-opt:hover { border-color: var(--ink); background: var(--paper-dark); }
+  .review-likert-opt.selected { border-color: var(--accent); background: var(--accent-light); }
+
+  .review-cand-row {
+    margin-bottom: 0.9rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--rule);
+  }
+
+  .review-cand-name {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .review-cand-answer { font-size: 0.85rem; color: var(--ink); margin: 0.1rem 0 0.25rem; }
+
+  .review-cand-quote {
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .review-footer { padding-top: 2rem; text-align: center; }
+
+  /* ── TOPIC WEIGHT ── */
+  #topic-weight { display: none; padding: 2rem 0 4rem; animation: fadeUp 0.5s ease both; }
+
+  .weight-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .weight-header h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+  }
+
+  .weight-header p { font-style: italic; color: var(--muted); font-size: 1rem; }
+
+  .weight-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--rule);
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .weight-topic { font-family: var(--serif); font-size: 1rem; font-weight: 600; flex: 1; min-width: 160px; }
+
+  .weight-buttons { display: flex; gap: 0.4rem; flex-shrink: 0; }
+
+  .weight-btn {
+    cursor: pointer;
+    border: 1.5px solid var(--rule);
+    padding: 0.35rem 0.65rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.03em;
+    transition: all 0.15s;
+    background: var(--paper);
+    white-space: nowrap;
+    font-family: var(--body);
+  }
+
+  .weight-btn:hover { border-color: var(--ink); background: var(--paper-dark); }
+  .weight-btn.selected { border-color: var(--accent); background: var(--accent-light); font-weight: 600; }
+
+  .weight-footer { padding-top: 2rem; text-align: center; }
+
+  /* ── EXPLORER ── */
+  #explorer { display: none; padding: 2rem 0 4rem; animation: fadeUp 0.5s ease both; }
+
+  .explorer-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .explorer-header h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 900;
+  }
+
+  .explorer-selects {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .explorer-selects select {
+    font-family: var(--body);
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+    border: 1.5px solid var(--ink);
+    background: var(--paper);
+    color: var(--ink);
+    cursor: pointer;
+    flex: 1;
+    min-width: 180px;
+  }
+
+  .explorer-vs { font-family: var(--serif); font-weight: 900; font-size: 1.1rem; color: var(--muted); }
+
+  .explorer-row { border-bottom: 1px solid var(--rule); padding: 1.5rem 0; }
+
+  .explorer-topic {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+
+  .explorer-question {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .explorer-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  @media (max-width: 500px) { .explorer-cols { grid-template-columns: 1fr; } }
+
+  .explorer-col { border-left: 3px solid var(--rule); padding-left: 0.75rem; }
+  .explorer-col.same { border-left-color: var(--agree); background: var(--agree-light); padding: 0.5rem 0.75rem; }
+
+  .explorer-agree-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--agree);
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+
+  .explorer-cand-name {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+  }
+
+  .explorer-answer { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.35rem; }
+  .explorer-quote { font-style: italic; font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+  .explorer-no-pos { font-style: italic; font-size: 0.85rem; color: var(--muted); }
+
+  .btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 0.9rem;
+    padding: 0.6rem 1.25rem;
+    cursor: pointer;
+    border: 1.5px solid var(--ink);
+    letter-spacing: 0.05em;
+    transition: all 0.15s;
+    text-decoration: none;
+    margin-top: 1rem;
+  }
+
+  .btn-secondary:hover { background: var(--ink); color: var(--paper); }
+
   /* ── RESTART ── */
   .restart-wrap { text-align: center; margin-top: 3rem; }
 
@@ -461,6 +696,8 @@
       shown includes a direct quote. This tool is nonpartisan and does not endorse any candidate.
     </div>
     <button class="btn-start" id="btn-start">Take the Quiz →</button>
+    <br>
+    <button class="btn-secondary" id="btn-compare-intro">Compare any two candidates →</button>
   </section>
 
   <!-- LOADING -->
@@ -477,109 +714,182 @@
     <div class="question-card" id="question-card"></div>
   </section>
 
+  <!-- TOPIC WEIGHT -->
+  <section id="topic-weight">
+    <div class="weight-header">
+      <h2>What matters most to you?</h2>
+      <p>Tell us which issues are priorities — we'll weight your match score accordingly.</p>
+    </div>
+    <div id="weight-list"></div>
+    <div class="weight-footer">
+      <button class="btn-start" id="btn-start-quiz">Start the Quiz →</button>
+    </div>
+  </section>
+
+  <!-- REVIEW -->
+  <section id="review">
+    <div class="review-header">
+      <h2>What the candidates said</h2>
+      <p>Review each candidate's position — you can still change your answers before seeing your match.</p>
+    </div>
+    <div id="review-questions"></div>
+    <div class="review-footer">
+      <button class="btn-start" id="btn-calculate">Calculate My Match →</button>
+    </div>
+  </section>
+
   <!-- RESULTS -->
   <section id="results">
     <h2 class="results-headline" id="results-headline">Your closest matches</h2>
     <p class="results-deck" id="results-deck"></p>
     <div id="results-list"></div>
 
-    <div class="quotes-section">
-      <h3>What the candidates said</h3>
-      <div id="quotes-list"></div>
-    </div>
-
     <div class="restart-wrap">
       <button class="btn-start" id="btn-restart">Take the quiz again</button>
+      <br>
+      <button class="btn-secondary" id="btn-compare-results">Compare any two candidates →</button>
     </div>
+  </section>
+
+  <!-- EXPLORER -->
+  <section id="explorer">
+    <button class="btn-secondary" id="btn-explorer-back" style="margin-bottom:1.5rem">← Back</button>
+    <div class="explorer-header">
+      <h2>Compare Candidates</h2>
+    </div>
+    <div class="explorer-selects">
+      <select id="explorer-cand-a"></select>
+      <span class="explorer-vs">vs</span>
+      <select id="explorer-cand-b"></select>
+    </div>
+    <div id="explorer-rows"></div>
   </section>
 
 </main>
 
 <script>
-// ─────────────────────────────────────────────
-// CONFIG: path to your quiz data JSON
-// ─────────────────────────────────────────────
 const QUIZ_DATA_URL = './quiz_data.json';
 
-// ─────────────────────────────────────────────
-// STATE
-// ─────────────────────────────────────────────
-let quizData = null;
-let questions = [];
-let candidates = [];
-let answers = {};   // { questionIndex: "A"|"B"|"C"|"D" }
-let currentQ = 0;
+// ─── STATE ───────────────────────────────────
+let quizData     = null;
+let questions    = [];
+let candidates   = [];
+let answers      = {};   // { qIdx: "A"|"B"|"C"|"D" }
+let topicWeights = {};   // { qIdx: 'low'|'medium'|'high' }
+let currentQ     = 0;
+let explorerFrom = 'intro';
 
-// ─────────────────────────────────────────────
-// DOM REFS
-// ─────────────────────────────────────────────
+const WEIGHT_VAL = { low: 0.5, medium: 1.0, high: 2.0 };
+const LIKERT_VAL = { A: 4, B: 3, C: 2, D: 1 };
+
+// ─── DOM REFS ─────────────────────────────────
 const $intro        = document.getElementById('intro');
 const $loading      = document.getElementById('loading');
 const $errorMsg     = document.getElementById('error-msg');
+const $topicWeight  = document.getElementById('topic-weight');
 const $quiz         = document.getElementById('quiz');
+const $review       = document.getElementById('review');
 const $results      = document.getElementById('results');
+const $explorer     = document.getElementById('explorer');
 const $progressWrap = document.getElementById('progress-wrap');
 const $progressBar  = document.getElementById('progress-bar');
 const $progressLbl  = document.getElementById('progress-label');
 const $qCard        = document.getElementById('question-card');
-const $btnStart     = document.getElementById('btn-start');
-const $btnRestart   = document.getElementById('btn-restart');
 
-// ─────────────────────────────────────────────
-// BOOT
-// ─────────────────────────────────────────────
-$btnStart.addEventListener('click', startQuiz);
-$btnRestart.addEventListener('click', restartQuiz);
+// ─── BOOT ─────────────────────────────────────
+document.getElementById('btn-start').addEventListener('click', () => loadData().then(showTopicWeight).catch(() => {}));
+document.getElementById('btn-compare-intro').addEventListener('click', () => loadData().then(() => showExplorer('intro')).catch(() => {}));
+document.getElementById('btn-restart').addEventListener('click', restartQuiz);
+document.getElementById('btn-calculate').addEventListener('click', showResults);
+document.getElementById('btn-start-quiz').addEventListener('click', startQuizFromWeights);
+document.getElementById('btn-compare-results').addEventListener('click', () => showExplorer('results'));
+document.getElementById('btn-explorer-back').addEventListener('click', explorerBack);
 
-async function startQuiz() {
-  $intro.style.display = 'none';
+// ─── DATA LOADING ─────────────────────────────
+async function loadData() {
+  if (quizData) return;
+  hideAll();
   $loading.style.display = 'block';
-
   try {
     const res = await fetch(QUIZ_DATA_URL);
     if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
     quizData = await res.json();
   } catch (err) {
-    showError(`Could not load quiz data: ${err.message}<br>
-               Make sure quiz_data.json is in the same folder as index.html.`);
-    return;
+    showError(`Could not load quiz data: ${err.message}<br>Make sure quiz_data.json is in the same folder as index.html.`);
+    throw err;
   }
-
   questions  = quizData.questions  || [];
   candidates = quizData.candidates || [];
-
   if (questions.length === 0) {
-    showError('Quiz data contains no questions. Run generate_quiz.py to generate quiz_data.json.');
-    return;
+    showError('Quiz data contains no questions. Run generate_quiz.py to regenerate quiz_data.json.');
+    throw new Error('no questions');
   }
-
   $loading.style.display = 'none';
+}
+
+function hideAll() {
+  [$intro, $topicWeight, $quiz, $review, $results, $explorer, $progressWrap, $loading]
+    .forEach(el => el.style.display = 'none');
+}
+
+// ─── TOPIC WEIGHT ─────────────────────────────
+function showTopicWeight() {
+  hideAll();
+  questions.forEach((_, idx) => { if (!topicWeights[idx]) topicWeights[idx] = 'medium'; });
+
+  const $list = document.getElementById('weight-list');
+  $list.innerHTML = questions.map((q, idx) => `
+    <div class="weight-row">
+      <div class="weight-topic">${escHtml(q.topic)}</div>
+      <div class="weight-buttons">
+        ${['low','medium','high'].map(level => `
+          <button class="weight-btn ${topicWeights[idx] === level ? 'selected' : ''}"
+                  data-qidx="${idx}" data-level="${level}">
+            ${level === 'low' ? 'Not a priority' : level === 'medium' ? 'Important' : 'Top priority'}
+          </button>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+
+  $list.querySelectorAll('.weight-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.dataset.qidx);
+      topicWeights[idx] = btn.dataset.level;
+      $list.querySelectorAll(`.weight-btn[data-qidx="${idx}"]`).forEach(b => {
+        b.classList.toggle('selected', b.dataset.level === btn.dataset.level);
+      });
+    });
+  });
+
+  $topicWeight.style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function startQuizFromWeights() {
+  hideAll();
+  answers  = {};
+  currentQ = 0;
   $progressWrap.style.display = 'block';
   $quiz.style.display = 'block';
-  answers = {};
-  currentQ = 0;
   renderQuestion();
 }
 
 function restartQuiz() {
-  $results.style.display = 'none';
-  answers = {};
+  hideAll();
+  answers  = {};
   currentQ = 0;
-  $quiz.style.display = 'block';
-  $progressWrap.style.display = 'block';
-  renderQuestion();
+  showTopicWeight();
 }
 
-// ─────────────────────────────────────────────
-// QUESTION RENDERING
-// ─────────────────────────────────────────────
+// ─── QUESTION RENDERING ───────────────────────
 function renderQuestion() {
-  const q = questions[currentQ];
-  const pct = Math.round((currentQ / questions.length) * 100);
-  $progressBar.style.width = pct + '%';
-  $progressLbl.textContent = `Question ${currentQ + 1} of ${questions.length}`;
-
+  const q        = questions[currentQ];
+  const pct      = Math.round((currentQ / questions.length) * 100);
   const selected = answers[currentQ];
+
+  $progressBar.style.width  = pct + '%';
+  $progressLbl.textContent  = `Question ${currentQ + 1} of ${questions.length}`;
 
   $qCard.innerHTML = `
     <div class="question-topic">${escHtml(q.topic)}</div>
@@ -587,8 +897,7 @@ function renderQuestion() {
     <div class="likert-grid" role="radiogroup" aria-label="Your answer">
       ${q.options.map(opt => `
         <label class="likert-option ${selected === opt.id ? 'selected' : ''}">
-          <input type="radio" name="q${currentQ}" value="${opt.id}"
-                 ${selected === opt.id ? 'checked' : ''}>
+          <input type="radio" name="q${currentQ}" value="${opt.id}" ${selected === opt.id ? 'checked' : ''}>
           <span class="likert-label">${escHtml(opt.text)}</span>
         </label>
       `).join('')}
@@ -596,12 +905,11 @@ function renderQuestion() {
     <div class="quiz-nav">
       <button class="btn-nav" id="btn-prev" ${currentQ === 0 ? 'disabled' : ''}>← Back</button>
       <button class="btn-nav primary" id="btn-next">
-        ${currentQ === questions.length - 1 ? 'See Results →' : 'Next →'}
+        ${currentQ === questions.length - 1 ? 'Review Candidate Positions →' : 'Next →'}
       </button>
     </div>
   `;
 
-  // Wire up radio buttons
   $qCard.querySelectorAll('input[type="radio"]').forEach(radio => {
     radio.addEventListener('change', e => {
       answers[currentQ] = e.target.value;
@@ -610,91 +918,104 @@ function renderQuestion() {
     });
   });
 
-  document.getElementById('btn-prev').addEventListener('click', () => {
-    currentQ--;
-    renderQuestion();
-  });
+  document.getElementById('btn-prev').addEventListener('click', () => { currentQ--; renderQuestion(); });
 
   document.getElementById('btn-next').addEventListener('click', () => {
     if (answers[currentQ] === undefined) {
-      // Gentle nudge — highlight options
       $qCard.querySelectorAll('.likert-option').forEach(el => {
         el.style.borderColor = 'var(--accent)';
         setTimeout(() => el.style.borderColor = '', 600);
       });
       return;
     }
-    if (currentQ === questions.length - 1) {
-      showResults();
-    } else {
-      currentQ++;
-      renderQuestion();
-    }
+    if (currentQ === questions.length - 1) { showReview(); }
+    else { currentQ++; renderQuestion(); }
   });
 
-  // Animate card
   $qCard.style.animation = 'none';
-  void $qCard.offsetWidth; // reflow
+  void $qCard.offsetWidth;
   $qCard.style.animation = '';
   $qCard.classList.remove('question-card');
   void $qCard.offsetWidth;
   $qCard.classList.add('question-card');
 }
 
-// ─────────────────────────────────────────────
-// SCORING
-// ─────────────────────────────────────────────
+// ─── REVIEW ───────────────────────────────────
+function showReview() {
+  hideAll();
+  const $rq = document.getElementById('review-questions');
+  $rq.innerHTML = questions.map((q, idx) => {
+    const userAnswer  = answers[idx];
+    const likertHtml  = q.options.map(opt => `
+      <span class="review-likert-opt ${userAnswer === opt.id ? 'selected' : ''}"
+            data-qidx="${idx}" data-val="${opt.id}">${escHtml(opt.text)}</span>
+    `).join('');
+    const candHtml = Object.entries(q.candidate_positions || {}).map(([name, pos]) => {
+      const label = q.options.find(o => o.id === pos.answer)?.text ?? pos.answer;
+      const quote = pos.quote
+        ? `<div class="review-cand-quote">"${escHtml(pos.quote)}"</div>`
+        : `<div class="review-cand-quote no-quote">No direct quote available.</div>`;
+      return `<div class="review-cand-row">
+        <div class="review-cand-name">${escHtml(name)}</div>
+        <div class="review-cand-answer">${escHtml(label)}</div>
+        ${quote}
+      </div>`;
+    }).join('');
+    return `
+      <div class="review-card" style="animation-delay:${idx * 0.05}s">
+        <div class="question-topic">${escHtml(q.topic)}</div>
+        <div class="review-question-text">${escHtml(q.question)}</div>
+        <div class="review-sublabel">Your answer</div>
+        <div class="review-likert">${likertHtml}</div>
+        <div class="review-sublabel">What candidates said</div>
+        ${candHtml}
+      </div>`;
+  }).join('');
 
-// Likert answer → numeric value (1-4, strongly agree = 4, strongly disagree = 1)
-const LIKERT_VAL = { A: 4, B: 3, C: 2, D: 1 };
-
-function scoreCandidate(candidateName) {
-  let totalWeight = 0;
-  let agreementScore = 0;
-
-  questions.forEach((q, idx) => {
-    const userAnswer = answers[idx];
-    const candidatePos = q.candidate_positions?.[candidateName];
-    if (!userAnswer || !candidatePos) return;
-
-    const userVal = LIKERT_VAL[userAnswer] ?? 2.5;
-    const candVal = LIKERT_VAL[candidatePos.answer] ?? 2.5;
-
-    // Distance: 0 (identical) to 3 (maximally different)
-    const distance = Math.abs(userVal - candVal);
-    // Agreement: 1 (identical) to 0 (max different)
-    const agreement = 1 - distance / 3;
-
-    agreementScore += agreement;
-    totalWeight += 1;
+  $rq.querySelectorAll('.review-likert-opt').forEach(el => {
+    el.addEventListener('click', () => {
+      const idx = parseInt(el.dataset.qidx);
+      answers[idx] = el.dataset.val;
+      $rq.querySelectorAll(`.review-likert-opt[data-qidx="${idx}"]`).forEach(o => {
+        o.classList.toggle('selected', o.dataset.val === answers[idx]);
+      });
+    });
   });
 
-  if (totalWeight === 0) return 0;
-  return Math.round((agreementScore / totalWeight) * 100);
+  $review.style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ─────────────────────────────────────────────
-// RESULTS
-// ─────────────────────────────────────────────
+// ─── SCORING ──────────────────────────────────
+function scoreCandidate(candidateName) {
+  let totalWeight = 0, agreementScore = 0;
+  questions.forEach((q, idx) => {
+    const userAnswer  = answers[idx];
+    const candidatePos = q.candidate_positions?.[candidateName];
+    if (!userAnswer || !candidatePos) return;
+    const weight    = WEIGHT_VAL[topicWeights[idx] ?? 'medium'];
+    const userVal   = LIKERT_VAL[userAnswer] ?? 2.5;
+    const candVal   = LIKERT_VAL[candidatePos.answer] ?? 2.5;
+    const agreement = 1 - Math.abs(userVal - candVal) / 3;
+    agreementScore += agreement * weight;
+    totalWeight    += weight;
+  });
+  return totalWeight === 0 ? 0 : Math.round((agreementScore / totalWeight) * 100);
+}
+
+// ─── RESULTS ──────────────────────────────────
 function showResults() {
-  $quiz.style.display = 'none';
-  $progressWrap.style.display = 'none';
+  hideAll();
   $progressBar.style.width = '100%';
 
-  // Score all candidates
-  const scored = candidates.map(c => ({
-    ...c,
-    score: scoreCandidate(c.name),
-  })).sort((a, b) => b.score - a.score);
-
-  const topScore = scored[0]?.score ?? 0;
-  const topName  = scored[0]?.name  ?? 'No candidate';
+  const scored = candidates.map(c => ({ ...c, score: scoreCandidate(c.name) }))
+                            .sort((a, b) => b.score - a.score);
+  const topName = scored[0]?.name ?? 'No candidate';
 
   document.getElementById('results-headline').textContent = `You match most with ${topName}`;
   document.getElementById('results-deck').textContent =
     `Based on your answers to ${Object.keys(answers).length} questions about Cambridge School Committee issues.`;
 
-  // Candidate bars
   const $list = document.getElementById('results-list');
   $list.innerHTML = scored.map((c, i) => `
     <div class="candidate-row ${i === 0 ? 'top-match' : ''}" style="animation-delay:${i * 0.08}s">
@@ -709,70 +1030,85 @@ function showResults() {
     </div>
   `).join('');
 
-  // Animate bars after paint
   requestAnimationFrame(() => requestAnimationFrame(() => {
-    $list.querySelectorAll('.match-bar-fill').forEach(el => {
-      el.style.width = el.dataset.pct + '%';
-    });
+    $list.querySelectorAll('.match-bar-fill').forEach(el => el.style.width = el.dataset.pct + '%');
   }));
-
-  // Quote accordion — for each question, show where each candidate stood
-  const $quotes = document.getElementById('quotes-list');
-  $quotes.innerHTML = questions.map((q, idx) => {
-    const userAnswer = answers[idx];
-    const userLabel  = q.options.find(o => o.id === userAnswer)?.text ?? '—';
-
-    const quoteRows = Object.entries(q.candidate_positions || {}).map(([name, pos]) => {
-      const label = q.options.find(o => o.id === pos.answer)?.text ?? pos.answer;
-      const quote = pos.quote ? `<blockquote>"${escHtml(pos.quote)}"</blockquote>` : `<p class="no-quote">No direct quote available.</p>`;
-      return `
-        <div style="margin-bottom:1rem">
-          <div class="quote-cand-name">${escHtml(name)}</div>
-          <div style="font-size:0.85rem;margin-bottom:0.4rem;color:var(--muted)">${escHtml(label)}</div>
-          ${quote}
-        </div>
-      `;
-    }).join('');
-
-    return `
-      <details class="quote-accordion">
-        <summary>
-          <span class="q-topic">${escHtml(q.topic)}</span>
-          <span class="q-answer">You: ${escHtml(userLabel)}</span>
-        </summary>
-        <div class="quote-body">
-          <p style="font-size:0.9rem;margin-bottom:1rem;font-style:italic">${escHtml(q.question)}</p>
-          ${quoteRows}
-        </div>
-      </details>
-    `;
-  }).join('');
 
   $results.style.display = 'block';
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ─────────────────────────────────────────────
-// UTILS
-// ─────────────────────────────────────────────
+// ─── EXPLORER ─────────────────────────────────
+function showExplorer(from) {
+  explorerFrom = from;
+  hideAll();
+
+  const $selA = document.getElementById('explorer-cand-a');
+  const $selB = document.getElementById('explorer-cand-b');
+  const opts  = candidates.map(c => `<option value="${escHtml(c.name)}">${escHtml(c.name)}</option>`).join('');
+  $selA.innerHTML = opts;
+  $selB.innerHTML = opts;
+  if (candidates.length > 1) $selB.selectedIndex = 1;
+
+  const rerender = () => renderExplorerRows($selA.value, $selB.value);
+  $selA.addEventListener('change', rerender);
+  $selB.addEventListener('change', rerender);
+  rerender();
+
+  $explorer.style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function explorerBack() {
+  hideAll();
+  if (explorerFrom === 'results') { $results.style.display = 'block'; }
+  else { $intro.style.display = 'block'; }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderExplorerRows(nameA, nameB) {
+  const $rows = document.getElementById('explorer-rows');
+  $rows.innerHTML = questions.map(q => {
+    const posA = q.candidate_positions?.[nameA];
+    const posB = q.candidate_positions?.[nameB];
+    const same = posA && posB && posA.answer === posB.answer;
+
+    const col = (name, pos) => {
+      if (!pos) return `<div class="explorer-col">
+        <div class="explorer-cand-name">${escHtml(name)}</div>
+        <div class="explorer-no-pos">No position recorded</div>
+      </div>`;
+      const label = q.options.find(o => o.id === pos.answer)?.text ?? pos.answer;
+      const quote = pos.quote ? `<div class="explorer-quote">"${escHtml(pos.quote)}"</div>` : '';
+      return `<div class="explorer-col ${same ? 'same' : ''}">
+        ${same ? '<div class="explorer-agree-tag">Same position</div>' : ''}
+        <div class="explorer-cand-name">${escHtml(name)}</div>
+        <div class="explorer-answer">${escHtml(label)}</div>
+        ${quote}
+      </div>`;
+    };
+
+    return `<div class="explorer-row">
+      <div class="explorer-topic">${escHtml(q.topic)}</div>
+      <div class="explorer-question">${escHtml(q.question)}</div>
+      <div class="explorer-cols">${col(nameA, posA)}${col(nameB, posB)}</div>
+    </div>`;
+  }).join('');
+}
+
+// ─── UTILS ────────────────────────────────────
 function escHtml(str) {
   if (!str) return '';
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
 function ordinal(n) {
-  const s = ['th','st','nd','rd'];
-  const v = n % 100;
+  const s = ['th','st','nd','rd'], v = n % 100;
   return n + (s[(v - 20) % 10] || s[v] || s[0]);
 }
 
 function showError(html) {
-  $loading.style.display = 'none';
-  $quiz.style.display = 'none';
+  hideAll();
   $errorMsg.innerHTML = `<strong>Error:</strong> ${html}`;
   $errorMsg.style.display = 'block';
   $intro.style.display = 'block';

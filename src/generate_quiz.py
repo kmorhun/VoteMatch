@@ -1,16 +1,15 @@
 """
-Step 3: Generate quiz questions grounded in transcript quotes.
+Step 3b: Generate quiz questions grounded in transcript quotes.
 
-Only emits a question if the LLM can provide a verbatim supporting quote
-from the transcript for at least one candidate's position. This directly
-addresses the defamation-risk concern.
+Only emits a question if Claude can provide a verbatim supporting quote
+from the transcript for at least two candidates' positions.
 
 Usage:
     python src/generate_quiz.py
 
 Requires:
-    - data/transcripts/*_diarized.json  (from Step 1)
-    - data/speaker_map.json             (from Step 2, after your edits)
+    - data/candidate_corpora.json  (from build_corpora.py)
+    - data/speaker_map.json        (from identify_speakers.py)
     - ANTHROPIC_API_KEY in .env
 
 Outputs:
@@ -22,30 +21,17 @@ import os
 import re
 from pathlib import Path
 from dotenv import load_dotenv
-# import anthropic #change to free huggingface llm
-from huggingface_hub import InferenceClient
+import anthropic
 from typing import List, Dict
-import requests
 
 load_dotenv()
 
-# ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
-# if not ANTHROPIC_API_KEY:
-#     raise EnvironmentError("ANTHROPIC_API_KEY not set in .env file.")
+ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+if not ANTHROPIC_API_KEY:
+    raise EnvironmentError("ANTHROPIC_API_KEY not set in .env file.")
 
-# client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
-HF_TOKEN = os.getenv("HF_TOKEN")
-if not HF_TOKEN:
-    raise EnvironmentError("HF_TOKEN not set in .env file.")
-
-BASE_MODEL = "meta-llama/Llama-3.1-8B-Instruct"
-MY_MODEL = None  # Set this if you create a finetuned model
-model_id = MY_MODEL if MY_MODEL else BASE_MODEL
-client = InferenceClient(model=model_id, token=HF_TOKEN)
-
-
-# Likert scale answer options (same for every question)
 LIKERT_OPTIONS = [
     {"id": "A", "text": "Strongly agree"},
     {"id": "B", "text": "Somewhat agree"},
@@ -53,16 +39,12 @@ LIKERT_OPTIONS = [
     {"id": "D", "text": "Strongly disagree"},
 ]
 
-TARGET_QUESTIONS = 10  # aim for this many questions
+TARGET_QUESTIONS = 10
 
 
-def load_transcripts(transcript_dir: str) -> List[Dict]:
-    transcript_dir = Path(transcript_dir)
-    transcripts = []
-    for f in sorted(transcript_dir.glob("*_diarized.json")):
-        with open(f) as fp:
-            transcripts.append(json.load(fp))
-    return transcripts
+def load_corpora(corpora_path: str) -> Dict:
+    with open(corpora_path) as f:
+        return json.load(f)
 
 
 def load_speaker_map(speaker_map_path: str) -> dict:
@@ -70,59 +52,24 @@ def load_speaker_map(speaker_map_path: str) -> dict:
         return json.load(f)
 
 
-def build_candidate_corpora(transcripts: List[Dict], speaker_map: Dict) -> Dict[str, List[str]]:
-    """
-    Build a per-candidate corpus of their spoken text.
-    Returns: {candidate_name: [utterances...]}
-    """
-    # speaker_id → candidate name (only for included candidates)
-    id_to_name = {}
-    for speaker_id, info in speaker_map.items():
-        if info.get("include_in_quiz") and info.get("role") == "candidate" and info.get("name"):
-            id_to_name[speaker_id] = info["name"]
-
-    corpora = {name: [] for name in id_to_name.values()}
-
-    for transcript in transcripts:
-        for seg in transcript.get("segments", []):
-            speaker = seg.get("speaker", "")
-            text = seg.get("text", "").strip()
-            if speaker in id_to_name and text:
-                corpora[id_to_name[speaker]].append(text)
-
-    return corpora
-
-
 def build_full_corpus_text(corpora: Dict[str, List[str]]) -> str:
-    """Format the candidate corpora into a labeled text block for the LLM."""
     parts = []
     for candidate, utterances in corpora.items():
         combined = " ".join(utterances)
-        # Truncate very long corpora to stay within context limits
-        if len(combined) > 15000:
-            combined = combined[:15000] + "... [truncated]"
+        if len(combined) > 5000:
+            combined = combined[:5000] + "... [truncated]"
         parts.append(f"=== {candidate} ===\n{combined}")
     return "\n\n".join(parts)
 
 
 def generate_questions_and_positions(corpus_text: str, candidates: List[str]) -> List[Dict]:
-    """
-    Ask Claude to:
-    1. Identify key recurring themes/issues from the transcripts
-    2. For each theme, draft a quiz question (agree/disagree statement)
-    3. For each candidate × question, predict their Likert response AND provide
-       a verbatim quote (≤30 words) from their corpus supporting the prediction.
-    4. If no supporting quote exists, omit that candidate from that question.
-
-    Returns a list of raw question dicts (to be validated below).
-    """
     candidate_list = ", ".join(candidates)
 
     prompt = f"""You are analyzing transcripts from a Cambridge, MA School Committee candidate forum.
 Your job is to generate quiz questions for a voter-matching tool.
 
-CRITICAL RULE: For each question, you must provide a verbatim quote from the candidate's 
-transcript to justify their predicted position. If you cannot find a direct quote that 
+CRITICAL RULE: For each question, you must provide a verbatim quote from the candidate's
+transcript to justify their predicted position. If you cannot find a direct quote that
 supports a position, you must omit that candidate from that question entirely.
 Do NOT infer or extrapolate — only use what was explicitly said.
 
@@ -145,7 +92,7 @@ TASK:
 3. For each candidate, predict their Likert response:
    A = Strongly agree, B = Somewhat agree, C = Somewhat disagree, D = Strongly disagree
 
-4. For each prediction, provide a verbatim quote (under 30 words) from the candidate's 
+4. For each prediction, provide a verbatim quote (under 30 words) from the candidate's
    transcript. If no clear supporting quote exists, write null for that candidate.
 
 Respond ONLY with valid JSON in exactly this format:
@@ -160,7 +107,7 @@ Respond ONLY with valid JSON in exactly this format:
           "quote": "Exact verbatim quote from their transcript supporting this position"
         }},
         "Another Candidate": {{
-          "answer": "C", 
+          "answer": "C",
           "quote": null
         }}
       }}
@@ -171,32 +118,33 @@ Respond ONLY with valid JSON in exactly this format:
 Candidates to include: {candidate_list}
 Return JSON only, no other text."""
 
-    print("  Calling [free huggingface] API to generate quiz questions...")
-    messages = [{"role": "user", "content": prompt}]
-    response = client.chat_completion(messages=messages)
-    print("wohoo there is a response")
-    raw = response.choices[0].message.content.strip()
+    print("  Calling Claude API to generate quiz questions...")
+    message = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=8192,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    raw = message.content[0].text.strip()
 
     # Strip markdown code fences if present
     raw = re.sub(r"^```(?:json)?\s*", "", raw)
     raw = re.sub(r"\s*```$", "", raw)
 
-    return json.loads(raw)["questions"]
+    try:
+        return json.loads(raw)["questions"]
+    except json.JSONDecodeError as e:
+        print(f"\nERROR: Failed to parse Claude's response as JSON: {e}")
+        print(f"Stop reason: {message.stop_reason}")
+        print(f"Raw response (last 500 chars):\n{raw[-500:]}")
+        raise
 
 
 def validate_and_filter_questions(raw_questions: List[Dict]) -> List[Dict]:
-    """
-    Filter out:
-    - Questions where no candidate has a non-null quote
-    - Candidates with null quotes (drop them from that question)
-    - Questions where fewer than 2 candidates have quotes
-    """
     valid_questions = []
 
     for q in raw_questions:
         positions = q.get("candidate_positions", {})
 
-        # Keep only candidates with actual quotes
         grounded = {
             name: pos
             for name, pos in positions.items()
@@ -207,11 +155,10 @@ def validate_and_filter_questions(raw_questions: List[Dict]) -> List[Dict]:
             print(f"  Skipping '{q['topic']}': only {len(grounded)} candidate(s) have quotes")
             continue
 
-        # Validate Likert answers
         for name, pos in grounded.items():
             if pos.get("answer") not in {"A", "B", "C", "D"}:
                 print(f"  Warning: invalid answer '{pos.get('answer')}' for {name} on '{q['topic']}'")
-                pos["answer"] = "B"  # fallback
+                pos["answer"] = "B"
 
         valid_questions.append({
             "topic": q["topic"],
@@ -224,19 +171,11 @@ def validate_and_filter_questions(raw_questions: List[Dict]) -> List[Dict]:
 
 
 def build_quiz_data(questions: List[Dict], speaker_map: Dict) -> Dict:
-    """
-    Build the final quiz_data.json structure consumed by the frontend.
-    """
-    # Build candidate list with metadata
     candidates = []
     for speaker_id, info in speaker_map.items():
         if info.get("include_in_quiz") and info.get("role") == "candidate" and info.get("name"):
-            candidates.append({
-                "name": info["name"],
-                "speaker_id": speaker_id,
-            })
+            candidates.append({"name": info["name"], "speaker_id": speaker_id})
 
-    # Deduplicate (multiple speaker IDs could map to same name — shouldn't happen but safety)
     seen = set()
     unique_candidates = []
     for c in candidates:
@@ -258,47 +197,43 @@ def build_quiz_data(questions: List[Dict], speaker_map: Dict) -> Dict:
 
 
 def main():
-    transcript_dir = "data/transcripts"
+    import sys
+    use_cached = "--cached" in sys.argv
+
+    corpora_path = "data/candidate_corpora.json"
     speaker_map_path = "data/speaker_map.json"
+    raw_questions_path = "data/raw_questions.json"
     output_path = "data/quiz_data.json"
 
-    print("[1/5] Loading transcripts...")
-    transcripts = load_transcripts(transcript_dir)
-    if not transcripts:
-        print(f"ERROR: No transcripts found in {transcript_dir}. Run transcribe.py first.")
+    print("[1/4] Loading candidate corpora...")
+    if not Path(corpora_path).exists():
+        print(f"ERROR: {corpora_path} not found. Run build_corpora.py first.")
         return
-    print(f"      Loaded {len(transcripts)} transcript(s)")
+    corpora_data = load_corpora(corpora_path)
+    corpora = corpora_data["candidates"]
+    stats = corpora_data.get("stats", {})
+    for name, s in stats.items():
+        print(f"      {name}: {s['utterance_count']} utterances, {s['word_count']:,} words")
 
-    print("[2/5] Loading speaker map...")
-    if not Path(speaker_map_path).exists():
-        print(f"ERROR: {speaker_map_path} not found. Run identify_speakers.py first.")
-        return
+    print("[2/4] Loading speaker map...")
     speaker_map = load_speaker_map(speaker_map_path)
-
-    # Validate speaker map has at least some candidates
-    candidates = [
-        info["name"]
-        for info in speaker_map.values()
-        if info.get("include_in_quiz") and info.get("role") == "candidate" and info.get("name")
-    ]
-    if len(candidates) < 2:
-        print(f"ERROR: Need at least 2 candidates in speaker_map.json with include_in_quiz=true.")
-        print(f"       Found: {candidates}")
-        print(f"       Edit {speaker_map_path} and try again.")
-        return
+    candidates = list(corpora.keys())
     print(f"      Candidates: {candidates}")
 
-    print("[3/5] Building candidate corpora...")
-    corpora = build_candidate_corpora(transcripts, speaker_map)
-    corpus_text = build_full_corpus_text(corpora)
-    total_words = sum(len(u.split()) for utterances in corpora.values() for u in utterances)
-    print(f"      Total words across all candidates: {total_words:,}")
+    if use_cached and Path(raw_questions_path).exists():
+        print(f"[3/4] Loading cached questions from {raw_questions_path} (skipping API call)...")
+        with open(raw_questions_path) as f:
+            raw_questions = json.load(f)
+    else:
+        corpus_text = build_full_corpus_text(corpora)
+        print(f"[3/4] Generating quiz questions (targeting {TARGET_QUESTIONS})...")
+        raw_questions = generate_questions_and_positions(corpus_text, candidates)
+        with open(raw_questions_path, "w") as f:
+            json.dump(raw_questions, f, indent=2)
+        print(f"      Saved raw questions to {raw_questions_path}")
+    print(f"      {len(raw_questions)} candidate questions")
 
-    print(f"[4/5] Generating quiz questions (targeting {TARGET_QUESTIONS})...")
-    raw_questions = generate_questions_and_positions(corpus_text, candidates)
-    print(f"      Claude returned {len(raw_questions)} candidate questions")
-
-    print("[5/5] Validating and filtering questions...")
+    print("[4/4] Validating and filtering questions...")
     valid_questions = validate_and_filter_questions(raw_questions)
     print(f"      {len(valid_questions)} questions passed validation (have ≥2 grounded candidates)")
 
