@@ -1044,9 +1044,53 @@ function showReview() {
     el.addEventListener('click', () => {
       const idx = parseInt(el.dataset.qidx);
       answers[idx] = el.dataset.val;
-      $rq.querySelectorAll(`.review-likert-opt[data-qidx="${idx}"]`).forEach(o => {
+      
+      // Re-render just this question's card
+      const card = el.closest('.review-card');
+      const q = questions[idx];
+      const userAnswer = answers[idx];
+      const userVal = LIKERT_VAL[userAnswer] ?? 2.5;
+      
+      // Update selected state in likert options
+      card.querySelectorAll('.review-likert-opt').forEach(o => {
         o.classList.toggle('selected', o.dataset.val === answers[idx]);
       });
+      
+      // Re-sort and re-render candidate positions
+      const candidatePositions = Object.entries(q.candidate_positions || {})
+        .map(([name, pos]) => {
+          const candVal = LIKERT_VAL[pos.answer] ?? 2.5;
+          const distance = Math.abs(userVal - candVal);
+          return { name, pos, distance };
+        })
+        .sort((a, b) => {
+          if (a.distance === b.distance) {
+            const userSide = userVal > 2.5;
+            const aSide = (LIKERT_VAL[a.pos.answer] ?? 2.5) > 2.5;
+            const bSide = (LIKERT_VAL[b.pos.answer] ?? 2.5) > 2.5;
+            if (aSide === userSide && bSide !== userSide) return -1;
+            if (bSide === userSide && aSide !== userSide) return 1;
+          }
+          return a.distance - b.distance;
+        });
+      
+      const candHtml = candidatePositions.map(({ name, pos }) => {
+        const label = q.options.find(o => o.id === pos.answer)?.text ?? pos.answer;
+        const quote = pos.quote
+          ? `<div class="review-cand-quote">"${escHtml(pos.quote)}"</div>`
+          : `<div class="review-cand-quote no-quote">No direct quote available.</div>`;
+        return `<div class="review-cand-row">
+          <div class="review-cand-name">${escHtml(name)}</div>
+          <div class="review-cand-answer">${escHtml(label)}</div>
+          ${quote}
+        </div>`;
+      }).join('');
+      
+      // Find and replace the candidate rows section
+      const candSection = card.querySelector('.review-sublabel:last-of-type').nextElementSibling;
+      if (candSection) {
+        candSection.outerHTML = candHtml;
+      }
     });
   });
 
