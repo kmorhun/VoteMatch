@@ -1005,7 +1005,17 @@ function showReview() {
         const distance = Math.abs(userVal - candVal);
         return { name, pos, distance };
       })
-      .sort((a, b) => a.distance - b.distance); // Closest first
+      .sort((a, b) => {
+        if (a.distance === b.distance) {
+          // Tie-breaker: prefer same side of middle (2.5)
+          const userSide = userVal > 2.5;
+          const aSide = (LIKERT_VAL[a.pos.answer] ?? 2.5) > 2.5;
+          const bSide = (LIKERT_VAL[b.pos.answer] ?? 2.5) > 2.5;
+          if (aSide === userSide && bSide !== userSide) return -1;
+          if (bSide === userSide && aSide !== userSide) return 1;
+        }
+        return a.distance - b.distance;
+      });
     
     const candHtml = candidatePositions.map(({ name, pos }) => {
       const label = q.options.find(o => o.id === pos.answer)?.text ?? pos.answer;
