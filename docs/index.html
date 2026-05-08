@@ -1086,11 +1086,10 @@ function showReview() {
         </div>`;
       }).join('');
       
-      // Find and replace the candidate rows section
-      const candSection = card.querySelector('.review-sublabel:last-of-type').nextElementSibling;
-      if (candSection) {
-        candSection.outerHTML = candHtml;
-      }
+      // Remove all existing candidate rows and insert new sorted ones
+      card.querySelectorAll('.review-cand-row').forEach(row => row.remove());
+      const lastSublabel = Array.from(card.querySelectorAll('.review-sublabel')).pop();
+      lastSublabel.insertAdjacentHTML('afterend', candHtml);
     });
   });
 
